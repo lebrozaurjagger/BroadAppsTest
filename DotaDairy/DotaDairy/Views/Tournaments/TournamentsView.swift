@@ -11,23 +11,28 @@ struct TournamentsView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
-                VStack {
-                    Rectangle()
-                        .ignoresSafeArea()
-                        .frame(height: 1)
-                        .foregroundColor(.darkBlue)
-                    
-                    Spacer()
-                }
-                
                 ScrollView {
+                    ZStack(alignment: .bottomLeading) {
+                        Rectangle()
+                            .foregroundColor(.darkBlue)
+                            .frame(height: 150)
+                        
+                        Text("Tournaments")
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(.system(size: 34, weight: .bold))
+                    }
+                    
                     VStack(spacing: 12) {
                         ForEach(0 ..< 9) { item in
-                            TournamentCard()
+                            NavigationLink(destination: AddTournamentView()) {
+                                TournamentCard()
+                            }
                         }
                     }
                     .padding(.vertical, 24)
                 }
+                .ignoresSafeArea()
                 
                 NavigationLink(destination: AddMatchView()) {
                     ZStack {
@@ -43,17 +48,21 @@ struct TournamentsView: View {
                             .font(.system(size: 22, weight: .semibold))
                             .foregroundColor(.white)
                     }
+                    .padding()
                 }
-                .padding()
             }
-            .navigationTitle("Tournaments")
+            .background(
+                VStack {
+                    Rectangle()
+                        .frame(height: 150)
+                        .foregroundColor(.darkBlue)
+                    
+                    Spacer()
+                }
+            )
+            .ignoresSafeArea()
         }
-        .onAppear() {
-            UINavigationBar.appearance().backgroundColor = UIColor(.darkBlue)
-            UINavigationBar.appearance().barTintColor = UIColor(.darkBlue)
-            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        }
+        .padding(.bottom, 48)
     }
 }
 

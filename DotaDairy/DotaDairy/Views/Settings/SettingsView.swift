@@ -12,15 +12,17 @@ struct SettingsView: View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
                 VStack {
-                    Rectangle()
-                        .ignoresSafeArea()
-                        .frame(height: 1)
-                        .foregroundColor(.darkBlue)
+                    ZStack(alignment: .bottomLeading) {
+                        Rectangle()
+                            .foregroundColor(.darkBlue)
+                            .frame(height: 150)
+                        
+                        Text("Settings")
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(.system(size: 34, weight: .bold))
+                    }
                     
-                    Spacer()
-                }
-                
-                VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(height: 168)
@@ -71,6 +73,7 @@ struct SettingsView: View {
                             .padding(.horizontal)
                         }
                     }
+                    .padding()
                     
                     Spacer()
                     
@@ -87,18 +90,12 @@ struct SettingsView: View {
                                 .foregroundColor(.white)
                         }
                     })
+                    .padding()
                 }
-                .padding()
-                .padding(.top, 8)
+                .ignoresSafeArea()
             }
-            .navigationBarTitle("Settings")
         }
-        .onAppear() {
-            UINavigationBar.appearance().backgroundColor = UIColor(.darkBlue)
-            UINavigationBar.appearance().barTintColor = UIColor(.darkBlue)
-            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        }
+        .padding(.bottom, 48)
     }
 }
 

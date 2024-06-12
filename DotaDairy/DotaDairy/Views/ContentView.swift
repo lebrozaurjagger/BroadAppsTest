@@ -7,34 +7,42 @@
 
 import SwiftUI
 
+enum Tab: String, Hashable, CaseIterable {
+    case matches = "gamecontroller.fill"
+    case tournaments = "trophy.fill"
+    case statistics = "chart.xyaxis.line"
+    case settings = "gearshape.fill"
+}
+
 struct ContentView: View {
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
+    
+    @State private var selectedTab: Tab = Tab.matches
+    
     var body: some View {
-        TabView {
-            MatchesView()
-                .tabItem {
-                    Image(systemName: "gamecontroller.fill")
-                }
-            
-            TournamentsView()
-                .tabItem {
-                    Image(systemName: "trophy.fill")
-                }
-            
-            StatisticsView()
-                .tabItem {
-                    Image(systemName: "chart.xyaxis.line")
-                }
-            
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "gearshape.fill")
-                }
+        ZStack(alignment: .bottom) {
+            TabView(selection: $selectedTab) {
+                MatchesView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .tag(Tab.matches)
+                
+                TournamentsView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .tag(Tab.tournaments)
+                
+                StatisticsView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .tag(Tab.statistics)
+                
+                SettingsView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .tag(Tab.settings)
+            }
+            TabBar(currentTab: $selectedTab)
         }
         .ignoresSafeArea()
-        .onAppear() {
-            UITabBar.appearance().barTintColor = UIColor(.darkBlue)
-            UITabBar.appearance().backgroundColor = UIColor(.darkBlue)
-        }
     }
 }
 
