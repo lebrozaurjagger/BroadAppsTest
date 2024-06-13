@@ -12,22 +12,12 @@ struct MatchesView: View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
-                    ZStack(alignment: .bottomLeading) {
-                        Rectangle()
-                            .foregroundColor(.darkBlue)
-                            .frame(height: 150)
-                        
-                        Text("Matches")
-                            .foregroundColor(.white)
-                            .padding()
-                            .font(.system(size: 34, weight: .bold))
-                    }
-                    
                     VStack(alignment: .leading) {
                         Text("Statistics")
                             .font(.system(size: 20, weight: .semibold))
                             .padding(.horizontal)
                             .padding(.top)
+                            .padding(.vertical, 8)
                         
                         HStack(spacing: 16) {
                             ZStack(alignment: .leading) {
@@ -64,14 +54,16 @@ struct MatchesView: View {
                                 .padding(.horizontal)
                             }
                         }
-                        .padding()
+                        .padding(.horizontal)
                         
                         Text("Matches")
                             .font(.system(size: 20, weight: .semibold))
                             .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .padding(.bottom, 8)
                         
                         VStack(spacing: 12) {
-                            ForEach(0 ..< 0) { item in
+                            ForEach(0 ..< 2) { item in
                                 NavigationLink(destination: AddMatchView()) {
                                     GameCardView()
                                 }
@@ -80,7 +72,6 @@ struct MatchesView: View {
                         .padding(.horizontal)
                     }
                 }
-                .ignoresSafeArea()
                 
                 NavigationLink(destination: AddMatchView()) {
                     ZStack {
@@ -99,16 +90,14 @@ struct MatchesView: View {
                 }
                 .padding()
             }
-            .background(
-                VStack {
-                    Rectangle()
-                        .frame(height: 150)
-                        .foregroundColor(.darkBlue)
-                    
-                    Spacer()
-                }
-            )
-            .ignoresSafeArea()
+            .navigationTitle("Matches")
+        }
+        .onAppear() {
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().backgroundColor = UIColor(.darkBlue)
+            UINavigationBar.appearance().barTintColor = UIColor(.darkBlue)
+            UINavigationBar.appearance().isTranslucent = false
         }
         .padding(.bottom, 48)
     }
@@ -131,10 +120,11 @@ struct GameCardView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 4)
                         .frame(width: 28, height: 33)
-                        .foregroundColor(.green)
+                        .foregroundColor(.customGreen)
                     
                     Text("W")
                         .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.customGreenDark)
                 }
                 
                 Spacer()
@@ -142,10 +132,11 @@ struct GameCardView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 4)
                         .frame(width: 28, height: 33)
-                        .foregroundColor(.red)
+                        .foregroundColor(.customRed)
                     
                     Text("L")
                         .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.customRedDark)
                 }
             }
             .padding()

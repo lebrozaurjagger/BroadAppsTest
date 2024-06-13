@@ -12,17 +12,6 @@ struct StatisticsView: View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
-                    ZStack(alignment: .bottomLeading) {
-                        Rectangle()
-                            .foregroundColor(.darkBlue)
-                            .frame(height: 150)
-                        
-                        Text("Statistics")
-                            .foregroundColor(.white)
-                            .padding()
-                            .font(.system(size: 34, weight: .bold))
-                    }
-                    
                     VStack(spacing: 16) {
                         HStack(spacing: 16) {
                             ZStack(alignment: .leading) {
@@ -33,7 +22,7 @@ struct StatisticsView: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text("23")
                                         .font(.system(size: 20, weight: .semibold))
-                                        .foregroundColor(.green)
+                                        .foregroundColor(.customGreen)
                                     
                                     Text("Total wins")
                                         .font(.system(size: 13))
@@ -50,7 +39,7 @@ struct StatisticsView: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text("12")
                                         .font(.system(size: 20, weight: .semibold))
-                                        .foregroundColor(.red)
+                                        .foregroundColor(.customRed)
                                     
                                     Text("Total defeats")
                                         .font(.system(size: 13))
@@ -134,18 +123,12 @@ struct StatisticsView: View {
                     }
                     .padding()
                 }
-                .ignoresSafeArea()
             }
-            .background(
-                VStack {
-                    Rectangle()
-                        .frame(height: 150)
-                        .foregroundColor(.darkBlue)
-                    
-                    Spacer()
-                }
-            )
-            .ignoresSafeArea()
+            .navigationTitle("Statistics")
+        }
+        .onAppear() {
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().backgroundColor = UIColor(.darkBlue)
         }
         .padding(.bottom, 48)
     }

@@ -12,65 +12,39 @@ struct SettingsView: View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
                 VStack {
-                    ZStack(alignment: .bottomLeading) {
-                        Rectangle()
-                            .foregroundColor(.darkBlue)
-                            .frame(height: 150)
-                        
-                        Text("Settings")
-                            .foregroundColor(.white)
-                            .padding()
-                            .font(.system(size: 34, weight: .bold))
-                    }
-                    
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(height: 168)
                             .foregroundColor(.lightBlue)
                         
                         VStack(spacing: 16) {
-                            HStack {
-                                Label("Usage Policy", systemImage: "doc.text.fill")
+                            Button(action: {
                                 
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                            }
-                            .foregroundColor(.white)
-                            .font(.system(size: 17, weight: .semibold))
-                            .padding(.horizontal)
+                            }, label: {
+                                ListButton(title: "Usage Policy", icon: "doc.text.fill")
+                            })
                             
                             Rectangle()
                                 .frame(height: 1)
                                 .foregroundColor(.lightMoreBlue)
                                 .padding(.leading, 64)
                             
-                            HStack {
-                                Label("Share App", systemImage: "square.and.arrow.up.fill")
+                            Button(action: {
                                 
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                            }
-                            .foregroundColor(.white)
-                            .font(.system(size: 17, weight: .semibold))
-                            .padding(.horizontal)
+                            }, label: {
+                                ListButton(title: "Share App", icon: "square.and.arrow.up.fill")
+                            })
                             
                             Rectangle()
                                 .frame(height: 1)
                                 .foregroundColor(.lightMoreBlue)
                                 .padding(.leading, 64)
                             
-                            HStack {
-                                Label("Rate Us", systemImage: "star.fill")
+                            Button(action: {
                                 
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                            }
-                            .foregroundColor(.white)
-                            .font(.system(size: 17, weight: .semibold))
-                            .padding(.horizontal)
+                            }, label: {
+                                ListButton(title: "Rate Us", icon: "star.fill")
+                            })
                         }
                     }
                     .padding()
@@ -92,8 +66,12 @@ struct SettingsView: View {
                     })
                     .padding()
                 }
-                .ignoresSafeArea()
             }
+            .navigationTitle("Settings")
+        }
+        .onAppear() {
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().backgroundColor = UIColor(.darkBlue)
         }
         .padding(.bottom, 48)
     }
@@ -101,4 +79,22 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+}
+
+struct ListButton: View {
+    @State var title: String
+    @State var icon: String
+    
+    var body: some View {
+        HStack {
+            Label(title, systemImage: icon)
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+        }
+        .foregroundColor(.white)
+        .font(.system(size: 17, weight: .semibold))
+        .padding(.horizontal)
+    }
 }

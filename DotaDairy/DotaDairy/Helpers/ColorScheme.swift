@@ -26,4 +26,17 @@ extension Color {
     public static var onboardingBack: Color {
         return Color(UIColor(red: 28/255, green: 31/255, blue: 33/255, alpha: 1.0))
     }
+    
+    public static var customGreen: Color {
+        return Color(UIColor(red: 119/255, green: 255/255, blue: 117/255, alpha: 1.0))
+    }
+    public static var customGreenDark: Color {
+        return Color(UIColor(red: 0/255, green: 119/255, blue: 55/255, alpha: 1.0))
+    }
+    public static var customRed: Color {
+        return Color(UIColor(red: 255/255, green: 85/255, blue: 85/255, alpha: 1.0))
+    }
+    public static var customRedDark: Color {
+        return Color(UIColor(red: 163/255, green: 0/255, blue: 0/255, alpha: 1.0))
+    }
 }

@@ -52,6 +52,10 @@ struct TabBar: View {
     }
 }
 
+#Preview {
+    ContentView()
+}
+
 private struct TabBarButton: View {
     let imageName: String
     var body: some View {
@@ -61,10 +65,4 @@ private struct TabBarButton: View {
             .frame(height: 24)
             .foregroundColor(.gray)
     }
-}
-
-
-
-#Preview {
-    ContentView()
 }

@@ -98,8 +98,6 @@ struct ReviewerOnboardingView: View {
                     if counter == 3 {
                         counter = 0
                     }
-                    
-                    print("DEBUG: Onboarding counter is - \(counter)")
                 }
             }, label: {
                 ZStack {

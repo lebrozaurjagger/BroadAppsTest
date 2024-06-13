@@ -8,31 +8,52 @@
 import SwiftUI
 
 struct TournamentsView: View {
+    @EnvironmentObject var eachTournament: Tournaments
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
-                    ZStack(alignment: .bottomLeading) {
-                        Rectangle()
-                            .foregroundColor(.darkBlue)
-                            .frame(height: 150)
-                        
-                        Text("Tournaments")
-                            .foregroundColor(.white)
-                            .padding()
-                            .font(.system(size: 34, weight: .bold))
-                    }
-                    
                     VStack(spacing: 12) {
-                        ForEach(0 ..< 9) { item in
-                            NavigationLink(destination: AddTournamentView()) {
-                                TournamentCard()
+                        ForEach(eachTournament.tournaments) { tournament in
+                            NavigationLink(destination: AddTournamentView().navigationBarHidden(true)) {
+                                ZStack(alignment: .leading) {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(height: 102)
+                                        .foregroundColor(.lightBlue)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(tournament.date)
+                                            .font(.system(size: 11))
+                                            .foregroundColor(.white.opacity(0.5))
+                                        
+                                        Text(tournament.title)
+                                            .font(.system(size: 17, weight: .semibold))
+                                            .foregroundColor(.white)
+                                        
+                                        Text(tournament.description)
+                                            .font(.system(size: 15))
+                                            .foregroundColor(.white.opacity(0.7))
+                                    }
+                                    .lineLimit(1)
+                                    .padding(.trailing, 40)
+                                    .padding(.horizontal)
+                                    
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                            .font(.system(size: 17, weight: .semibold))
+                                            .foregroundColor(.white)
+                                            .padding(.trailing)
+                                    }
+                                }
+                                .padding(.horizontal)
                             }
                         }
                     }
                     .padding(.vertical, 24)
                 }
-                .ignoresSafeArea()
                 
                 NavigationLink(destination: AddMatchView()) {
                     ZStack {
@@ -51,16 +72,11 @@ struct TournamentsView: View {
                     .padding()
                 }
             }
-            .background(
-                VStack {
-                    Rectangle()
-                        .frame(height: 150)
-                        .foregroundColor(.darkBlue)
-                    
-                    Spacer()
-                }
-            )
-            .ignoresSafeArea()
+            .navigationTitle("Tournaments")
+        }
+        .onAppear() {
+            UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().backgroundColor = UIColor(.darkBlue)
         }
         .padding(.bottom, 48)
     }
@@ -68,41 +84,5 @@ struct TournamentsView: View {
 
 #Preview {
     TournamentsView()
-}
-
-struct TournamentCard: View {
-    var body: some View {
-        ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(height: 102)
-                .foregroundColor(.lightBlue)
-            
-            VStack(alignment: .leading) {
-                Text("May 2024")
-                    .font(.system(size: 11))
-                    .foregroundColor(.white.opacity(0.5))
-                
-                Text("ESL One Birmingham")
-                    .font(.system(size: 17, weight: .semibold))
-                    .foregroundColor(.white)
-                
-                Text("A premier Dota 2 tournament organized by somebody END")
-                    .font(.system(size: 15))
-                    .foregroundColor(.white.opacity(0.7))
-            }
-            .lineLimit(1)
-            .padding(.trailing, 40)
-            .padding(.horizontal)
-            
-            HStack {
-                Spacer()
-                
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 17, weight: .semibold))
-                    .foregroundColor(.white)
-                    .padding(.trailing)
-            }
-        }
-        .padding(.horizontal)
-    }
+        .environmentObject(Tournaments())
 }
