@@ -15,10 +15,13 @@
 		6400DC422C19F0A7006DF41F /* UserOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC412C19F0A7006DF41F /* UserOnboardingView.swift */; };
 		6400DC4A2C1A1F13006DF41F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC492C1A1F13006DF41F /* LoadingView.swift */; };
 		6400DC4D2C1A3735006DF41F /* TournamentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC4C2C1A3735006DF41F /* TournamentModel.swift */; };
-		6400DC4F2C1A4850006DF41F /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC4E2C1A4850006DF41F /* TabBar.swift */; };
+		6400DC4F2C1A4850006DF41F /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC4E2C1A4850006DF41F /* CustomTabBar.swift */; };
 		6400DC512C1A6898006DF41F /* NotchChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC502C1A6898006DF41F /* NotchChecker.swift */; };
 		6400DC532C1B61E0006DF41F /* MatchesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC522C1B61E0006DF41F /* MatchesModel.swift */; };
 		6400DC552C1B6251006DF41F /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC542C1B6251006DF41F /* DateFormatter.swift */; };
+		6400DC572C1BA66A006DF41F /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC562C1BA66A006DF41F /* NotificationsView.swift */; };
+		6400DC5B2C1BBF8F006DF41F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */; };
+		6400DC5E2C1C77BE006DF41F /* EachTournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */; };
 		642E94CC2C18FC6D00478AB2 /* DotaDairyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94CB2C18FC6D00478AB2 /* DotaDairyApp.swift */; };
 		642E94CE2C18FC6D00478AB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94CD2C18FC6D00478AB2 /* ContentView.swift */; };
 		642E94D02C18FC6E00478AB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642E94CF2C18FC6E00478AB2 /* Assets.xcassets */; };
@@ -37,10 +40,13 @@
 		6400DC412C19F0A7006DF41F /* UserOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnboardingView.swift; sourceTree = "<group>"; };
 		6400DC492C1A1F13006DF41F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		6400DC4C2C1A3735006DF41F /* TournamentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentModel.swift; sourceTree = "<group>"; };
-		6400DC4E2C1A4850006DF41F /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		6400DC4E2C1A4850006DF41F /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		6400DC502C1A6898006DF41F /* NotchChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchChecker.swift; sourceTree = "<group>"; };
 		6400DC522C1B61E0006DF41F /* MatchesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesModel.swift; sourceTree = "<group>"; };
 		6400DC542C1B6251006DF41F /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		6400DC562C1BA66A006DF41F /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachTournamentView.swift; sourceTree = "<group>"; };
 		642E94C82C18FC6D00478AB2 /* DotaDairy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotaDairy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642E94CB2C18FC6D00478AB2 /* DotaDairyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotaDairyApp.swift; sourceTree = "<group>"; };
 		642E94CD2C18FC6D00478AB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +73,7 @@
 			children = (
 				6400DC322C19B780006DF41F /* TournamentsView.swift */,
 				6400DC342C19B790006DF41F /* AddTournamentView.swift */,
+				6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */,
 			);
 			path = Tournaments;
 			sourceTree = "<group>";
@@ -93,6 +100,7 @@
 				6400DC492C1A1F13006DF41F /* LoadingView.swift */,
 				6400DC3F2C19F092006DF41F /* ReviewerOnboardingView.swift */,
 				6400DC412C19F0A7006DF41F /* UserOnboardingView.swift */,
+				6400DC562C1BA66A006DF41F /* NotificationsView.swift */,
 			);
 			path = Onboardings;
 			sourceTree = "<group>";
@@ -104,6 +112,15 @@
 				6400DC4C2C1A3735006DF41F /* TournamentModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6400DC5C2C1BC0DD006DF41F /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				6400DC4E2C1A4850006DF41F /* CustomTabBar.swift */,
+				6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 		642E94BF2C18FC6D00478AB2 = {
@@ -160,9 +177,9 @@
 			isa = PBXGroup;
 			children = (
 				642E94DD2C18FD3500478AB2 /* ColorScheme.swift */,
-				6400DC4E2C1A4850006DF41F /* TabBar.swift */,
 				6400DC502C1A6898006DF41F /* NotchChecker.swift */,
 				6400DC542C1B6251006DF41F /* DateFormatter.swift */,
+				6400DC5C2C1BC0DD006DF41F /* Design */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -251,6 +268,7 @@
 				642E94DE2C18FD3500478AB2 /* ColorScheme.swift in Sources */,
 				6400DC532C1B61E0006DF41F /* MatchesModel.swift in Sources */,
 				6400DC352C19B790006DF41F /* AddTournamentView.swift in Sources */,
+				6400DC5B2C1BBF8F006DF41F /* CustomTextField.swift in Sources */,
 				642E94CE2C18FC6D00478AB2 /* ContentView.swift in Sources */,
 				6400DC4A2C1A1F13006DF41F /* LoadingView.swift in Sources */,
 				6400DC552C1B6251006DF41F /* DateFormatter.swift in Sources */,
@@ -261,8 +279,10 @@
 				642E94E12C19086200478AB2 /* AddMatchView.swift in Sources */,
 				6400DC422C19F0A7006DF41F /* UserOnboardingView.swift in Sources */,
 				6400DC4D2C1A3735006DF41F /* TournamentModel.swift in Sources */,
+				6400DC5E2C1C77BE006DF41F /* EachTournamentView.swift in Sources */,
 				6400DC3D2C19B7F5006DF41F /* SettingsView.swift in Sources */,
-				6400DC4F2C1A4850006DF41F /* TabBar.swift in Sources */,
+				6400DC4F2C1A4850006DF41F /* CustomTabBar.swift in Sources */,
+				6400DC572C1BA66A006DF41F /* NotificationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

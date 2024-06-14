@@ -11,8 +11,10 @@ import SwiftUI
 struct Tournament : Hashable, Codable, Identifiable {
     var id = UUID()
     var title: String
+    var location: String
     var description: String
-    var date: String
+    var month: String
+    var year: String
 }
 
 @MainActor class Tournaments : ObservableObject {
@@ -33,11 +35,11 @@ struct Tournament : Hashable, Codable, Identifiable {
                 return
             }
         }
-        tournaments = [Tournament(title: "TitleTemp", description: "DescriptionTemp", date: "May 2024")]
+        tournaments = [Tournament(title: "TitleTemp", location: "Somewhere", description: "DescriptionTemp", month: "May", year: "2024")]
     }
     
     func addTournament(title: String, description: String) {
-        let temporaryTournament = Tournament(title: "", description: "", date: "")
+        let temporaryTournament = Tournament(title: "", location: "", description: "", month: "", year: "")
         tournaments.insert(temporaryTournament, at: 0)
         saveData()
     }
@@ -48,18 +50,20 @@ struct Tournament : Hashable, Codable, Identifiable {
         }
     }
     
-    func deletAll() {
+    func deleteAll() {
         UserDefaults.standard.removeObject(forKey: USER_KEY)
         UserDefaults.resetStandardUserDefaults()
         tournaments = []
     }
     
-    func editTournament(id: UUID, title: String, description: String, date: String) {
+    func editTournament(id: UUID, title: String, location: String, description: String, month: String, year: String) {
         if let editingNote = tournaments.first(where: { $0.id == id }) {
             let index = tournaments.firstIndex(of: editingNote)
             tournaments[index!].title = title
+            tournaments[index!].location = location
             tournaments[index!].description = description
-            tournaments[index!].date = date
+            tournaments[index!].month = month
+            tournaments[index!].year = year
         }
     }
 }

@@ -25,10 +25,12 @@ struct ContentView: View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
                 MatchesView()
+                    .environmentObject(Matches())
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .tag(Tab.matches)
                 
                 TournamentsView()
+                    .environmentObject(Tournaments())
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .tag(Tab.tournaments)
                 

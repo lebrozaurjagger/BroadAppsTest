@@ -50,7 +50,7 @@ struct Match : Hashable, Codable, Identifiable {
         }
     }
     
-    func deletAll() {
+    func deleteAll() {
         UserDefaults.standard.removeObject(forKey: USER_KEY)
         UserDefaults.resetStandardUserDefaults()
         matches = []

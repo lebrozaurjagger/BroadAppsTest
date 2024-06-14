@@ -1,15 +1,23 @@
 //
-//  AddTournamentView.swift
+//  EachTournamentView.swift
 //  DotaDairy
 //
-//  Created by Phillip on 12.06.2024.
+//  Created by Phillip on 14.06.2024.
 //
 
 import SwiftUI
 
-struct AddTournamentView: View {
+struct EachTournamentView: View {
+    @EnvironmentObject var tournaments: Tournaments
+    @State var tournament: Tournament
+    
     @State private var tournamentName = ""
     @State private var location = ""
+    @State private var month = ""
+    @State private var year = ""
+    
+    @State private var prizePool = ""
+    @State private var description = ""
     
     @State private var selectedMonth = 1
     @State private var selectedYear = Calendar.current.component(.year, from: Date())
@@ -17,11 +25,6 @@ struct AddTournamentView: View {
         let formatter = DateFormatter()
         return formatter.monthSymbols
     }
-    
-    @State private var prizePool = ""
-    @State private var description = ""
-    
-    @EnvironmentObject var tournaments: Tournaments
     
     var body: some View {
         ScrollView {
@@ -36,15 +39,25 @@ struct AddTournamentView: View {
                         .foregroundColor(.lightBlue)
                     
                     VStack(alignment: .leading, spacing: 16) {
-                        CustomTextField(text: $tournamentName, placeholder: "Tournament name", textColor: .white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Tournament name:")
+                            
+                            TextField("", text: $tournament.title)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        CustomTextField(text: $location, placeholder: "Location", textColor: .white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Location:")
+                            
+                            TextField("", text: $tournament.location)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
@@ -52,7 +65,7 @@ struct AddTournamentView: View {
                         
                         
                         HStack {
-                            Text("Date")
+                            Text("Date:")
                             
                             Spacer()
                             
@@ -80,29 +93,42 @@ struct AddTournamentView: View {
                         .foregroundColor(.lightBlue)
                     
                     VStack(alignment: .leading, spacing: 16) {
-                        CustomTextField(text: $prizePool, placeholder: "Prize pool", textColor: .white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Prize pool:")
+                            
+                            TextField("", text: $prizePool)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        CustomTextField(text: $description, placeholder: "Description", textColor: .white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Description:")
+                            
+                            TextField("", text: $description)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                     }
                 }
                 
                 Spacer()
                 
                 Button(action: {
-                    
+//                    tournaments.editTournament(id: tournament.id,
+//                                              title: tournament.title,
+//                                              location: tournament.location,
+//                                              description: tournament.description)
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
                             .frame(height: 50)
                             .foregroundColor(.darkBlue)
                         
-                        Text("Add")
+                        Text("Save")
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundColor(.white.opacity(0.5))
                     }
@@ -114,5 +140,6 @@ struct AddTournamentView: View {
 }
 
 #Preview {
-    AddTournamentView()
+    TournamentsView()
+        .environmentObject(Tournaments())
 }

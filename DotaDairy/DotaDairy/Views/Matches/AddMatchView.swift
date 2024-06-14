@@ -8,6 +8,19 @@
 import SwiftUI
 
 struct AddMatchView: View {
+    @State private var gameName = ""
+    @State private var gameDate = ""
+    @State private var gameDuration = ""
+    
+    @State private var selectedType = 1
+    @State private var selectedPosition = 1
+    private var typeArray: [String] = ["11", "22"]
+    private var positionArray: [String] = ["Mid Lane", "Not Mid Lane"]
+    
+    @State private var location = ""
+    @State private var playedHero = ""
+    @State private var KDA = ""
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -17,24 +30,21 @@ struct AddMatchView: View {
                         .foregroundColor(.lightBlue)
                     
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Game name")
-                            .foregroundColor(.lightMoreBlue)
+                        CustomTextField(text: $gameName, placeholder: "Game name", textColor: .white)
                             .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Game date")
-                            .foregroundColor(.lightMoreBlue)
+                        CustomTextField(text: $gameDate, placeholder: "Game date", textColor: .white)
                             .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Game time")
-                            .foregroundColor(.lightMoreBlue)
+                        CustomTextField(text: $gameDuration, placeholder: "Game time", textColor: .white)
                             .padding(.horizontal)
                     }
                 }
@@ -45,40 +55,59 @@ struct AddMatchView: View {
                         .foregroundColor(.lightBlue)
                     
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Game type")
+                        HStack {
+                            Text("Game type")
+                            
+                            Spacer()
+                            
+                            Picker("", selection: $selectedType) {
+                                ForEach(1..<3) { index in
+                                    Text(self.typeArray[index - 1]).tag(index)
+                                }
+                            }
+                        }
+                        .padding(.vertical, -8)
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.leading)
+                        
+                        Rectangle()
+                            .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
+                        
+                        HStack {
+                            Text("Position")
+                            
+                            Spacer()
+                            
+                            Picker("", selection: $selectedPosition) {
+                                ForEach(1..<3) { index in
+                                    Text(self.positionArray[index - 1]).tag(index)
+                                }
+                            }
+                        }
+                        .padding(.vertical, -8)
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.leading)
+                        
+                        Rectangle()
+                            .frame(height: 1)
+                            .foregroundColor(.lightMoreBlue)
+                        
+                        CustomTextField(text: $location, placeholder: "Location", textColor: .white)
                             .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Position")
-                            .foregroundColor(.lightMoreBlue)
+                        CustomTextField(text: $playedHero, placeholder: "Played hero", textColor: .white)
                             .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Game duration")
-                            .foregroundColor(.lightMoreBlue)
-                            .padding(.horizontal)
-                        
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.lightMoreBlue)
-                        
-                        Text("Played hero")
-                            .foregroundColor(.lightMoreBlue)
-                            .padding(.horizontal)
-                        
-                        Rectangle()
-                            .frame(height: 1)
-                            .foregroundColor(.lightMoreBlue)
-                        
-                        Text("Your KDA")
-                            .foregroundColor(.lightMoreBlue)
+                        CustomTextField(text: $KDA, placeholder: "Your KDA", textColor: .white)
                             .padding(.horizontal)
                     }
                 }
@@ -89,17 +118,29 @@ struct AddMatchView: View {
                         .foregroundColor(.lightBlue)
                     
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Win")
-                            .foregroundColor(.lightMoreBlue)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Win")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "square")
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Lose")
-                            .foregroundColor(.lightMoreBlue)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Lose")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "square")
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                     }
                 }
                 
