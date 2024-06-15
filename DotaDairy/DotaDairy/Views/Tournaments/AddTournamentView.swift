@@ -8,20 +8,15 @@
 import SwiftUI
 
 struct AddTournamentView: View {
-    @State private var tournamentName = ""
-    @State private var location = ""
-    
-    @State private var selectedMonth = 1
-    @State private var selectedYear = Calendar.current.component(.year, from: Date())
-    private var months: [String] {
-        let formatter = DateFormatter()
-        return formatter.monthSymbols
-    }
-    
-    @State private var prizePool = ""
-    @State private var description = ""
-    
     @EnvironmentObject var tournaments: Tournaments
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State var tournamentName = ""
+    @State var location = ""
+    @State var date = ""
+    @State var prizePool = ""
+    @State var description = ""
     
     var body: some View {
         ScrollView {
@@ -50,27 +45,8 @@ struct AddTournamentView: View {
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        
-                        HStack {
-                            Text("Date")
-                            
-                            Spacer()
-                            
-                            Picker("Month", selection: $selectedMonth) {
-                                ForEach(1..<13) { index in
-                                    Text(self.months[index - 1]).tag(index)
-                                }
-                            }
-                            
-                            Picker("Year", selection: $selectedYear) {
-                                ForEach((1900...2100).reversed(), id: \.self) { year in
-                                    Text("\(year)").tag(year)
-                                }
-                            }
-                        }
-                        .padding(.vertical, -8)
-                        .foregroundColor(.lightMoreBlue)
-                        .padding(.horizontal)
+                        CustomTextField(text: $date, placeholder: "Date", textColor: .white)
+                            .padding(.horizontal)
                     }
                 }
                 
@@ -95,7 +71,15 @@ struct AddTournamentView: View {
                 Spacer()
                 
                 Button(action: {
-                    
+                    withAnimation {
+                        tournaments.addTournament(tournamentName: tournamentName,
+                                                  location: location,
+                                                  date: date,
+                                                  prizePool: prizePool,
+                                                  description: description)
+                        
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
@@ -115,4 +99,5 @@ struct AddTournamentView: View {
 
 #Preview {
     AddTournamentView()
+        .environmentObject(Tournaments())
 }

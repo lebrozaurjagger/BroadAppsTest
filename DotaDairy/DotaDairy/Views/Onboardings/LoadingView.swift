@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct LoadingView: View {
-    @State var variation = 1
+    @State private var variation = 1
+    @State private var progress: Double = 0.0
+    @State private var timer: Timer?
     
     var body: some View {
         ZStack {
@@ -41,17 +43,26 @@ struct LoadingView: View {
             VStack {
                 Spacer()
                 
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 150, height: 10)
-                        .foregroundColor(.white.opacity(variation == 1 ? 0.2 : 1))
-                    
-                    RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 90, height: 10)
-                        .foregroundColor(.lightBlue)
+                ProgressView(value: progress, total: 1.0)
+                    .progressViewStyle(CustomProgressViewStyle(variation: $variation))
+                    .frame(width: 150, height: 10)
+                    .onAppear(perform: startProgress)
+                    .frame(width: 150, height: 10)
+                    .padding(.bottom, 32)
+            }
+        }
+    }
+    
+    func startProgress() {
+        progress = 0.0
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            withAnimation {
+                if progress < 1.0 {
+                    progress += 0.1 / 7.0
+                } else {
+                    timer?.invalidate()
                 }
-                .frame(width: 150, height: 10)
-                .padding(.bottom, 32)
             }
         }
     }
@@ -59,4 +70,23 @@ struct LoadingView: View {
 
 #Preview {
     LoadingView()
+}
+
+struct CustomProgressViewStyle: ProgressViewStyle {
+    @Binding var variation: Int
+    
+    func makeBody(configuration: Configuration) -> some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: 5)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .foregroundColor(.white.opacity(variation == 1 ? 0.2 : 1))
+                
+                RoundedRectangle(cornerRadius: 5)
+                    .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * geometry.size.width, height: geometry.size.height)
+                    .foregroundColor(.lightBlue)
+            }
+            .cornerRadius(50)
+        }
+    }
 }

@@ -10,16 +10,15 @@ import SwiftUI
 
 struct Tournament : Hashable, Codable, Identifiable {
     var id = UUID()
-    var title: String
+    var tournamentName: String
     var location: String
+    var date: String
+    var prizePool: String
     var description: String
-    var month: String
-    var year: String
 }
 
 @MainActor class Tournaments : ObservableObject {
     private let USER_KEY = "A"
-    
     let date = Date()
     var tournaments: [Tournament] {
         didSet {
@@ -30,40 +29,34 @@ struct Tournament : Hashable, Codable, Identifiable {
     
     init() {
         if let data = UserDefaults.standard.data(forKey: USER_KEY) {
-            if let decodedTournaments = try? JSONDecoder().decode([Tournament].self, from: data) {
-                tournaments = decodedTournaments
+            if let decodedTournament = try? JSONDecoder().decode([Tournament].self, from: data) {
+                tournaments = decodedTournament
                 return
             }
         }
-        tournaments = [Tournament(title: "TitleTemp", location: "Somewhere", description: "DescriptionTemp", month: "May", year: "2024")]
+        tournaments = [Tournament(tournamentName: "Temp", location: "Temp", date: "Temp", prizePool: "Temp", description: "Temp")]
     }
     
-    func addTournament(title: String, description: String) {
-        let temporaryTournament = Tournament(title: "", location: "", description: "", month: "", year: "")
+    func addTournament(tournamentName: String, location: String, date: String, prizePool: String, description: String) {
+        let temporaryTournament = Tournament(tournamentName: tournamentName, location: location, date: date, prizePool: prizePool, description: description)
         tournaments.insert(temporaryTournament, at: 0)
         saveData()
     }
     
-    private func saveData() {
-        if let encodedTournaments = try? JSONEncoder().encode(tournaments) {
-            UserDefaults.standard.set(encodedTournaments, forKey: USER_KEY)
+    func editTournament(id: UUID, tournamentName: String, location: String, date: String, prizePool: String, description: String) {
+        if let editingTournament = tournaments.first(where: { $0.id == id }) {
+            let index = tournaments.firstIndex(of: editingTournament)
+            tournaments[index!].tournamentName = tournamentName
+            tournaments[index!].location = location
+            tournaments[index!].date = date
+            tournaments[index!].prizePool = prizePool
+            tournaments[index!].description = description
         }
     }
     
-    func deleteAll() {
-        UserDefaults.standard.removeObject(forKey: USER_KEY)
-        UserDefaults.resetStandardUserDefaults()
-        tournaments = []
-    }
-    
-    func editTournament(id: UUID, title: String, location: String, description: String, month: String, year: String) {
-        if let editingNote = tournaments.first(where: { $0.id == id }) {
-            let index = tournaments.firstIndex(of: editingNote)
-            tournaments[index!].title = title
-            tournaments[index!].location = location
-            tournaments[index!].description = description
-            tournaments[index!].month = month
-            tournaments[index!].year = year
+    private func saveData() {
+        if let encodedTournament = try? JSONEncoder().encode(tournaments) {
+            UserDefaults.standard.set(encodedTournament, forKey: USER_KEY)
         }
     }
 }

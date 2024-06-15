@@ -18,7 +18,6 @@
 		6400DC4F2C1A4850006DF41F /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC4E2C1A4850006DF41F /* CustomTabBar.swift */; };
 		6400DC512C1A6898006DF41F /* NotchChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC502C1A6898006DF41F /* NotchChecker.swift */; };
 		6400DC532C1B61E0006DF41F /* MatchesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC522C1B61E0006DF41F /* MatchesModel.swift */; };
-		6400DC552C1B6251006DF41F /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC542C1B6251006DF41F /* DateFormatter.swift */; };
 		6400DC572C1BA66A006DF41F /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC562C1BA66A006DF41F /* NotificationsView.swift */; };
 		6400DC5B2C1BBF8F006DF41F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */; };
 		6400DC5E2C1C77BE006DF41F /* EachTournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */; };
@@ -43,7 +42,6 @@
 		6400DC4E2C1A4850006DF41F /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		6400DC502C1A6898006DF41F /* NotchChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchChecker.swift; sourceTree = "<group>"; };
 		6400DC522C1B61E0006DF41F /* MatchesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesModel.swift; sourceTree = "<group>"; };
-		6400DC542C1B6251006DF41F /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		6400DC562C1BA66A006DF41F /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachTournamentView.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 			children = (
 				642E94DD2C18FD3500478AB2 /* ColorScheme.swift */,
 				6400DC502C1A6898006DF41F /* NotchChecker.swift */,
-				6400DC542C1B6251006DF41F /* DateFormatter.swift */,
 				6400DC5C2C1BC0DD006DF41F /* Design */,
 			);
 			path = Helpers;
@@ -271,7 +268,6 @@
 				6400DC5B2C1BBF8F006DF41F /* CustomTextField.swift in Sources */,
 				642E94CE2C18FC6D00478AB2 /* ContentView.swift in Sources */,
 				6400DC4A2C1A1F13006DF41F /* LoadingView.swift in Sources */,
-				6400DC552C1B6251006DF41F /* DateFormatter.swift in Sources */,
 				6400DC512C1A6898006DF41F /* NotchChecker.swift in Sources */,
 				642E94DB2C18FCA400478AB2 /* MatchesView.swift in Sources */,
 				6400DC402C19F092006DF41F /* ReviewerOnboardingView.swift in Sources */,

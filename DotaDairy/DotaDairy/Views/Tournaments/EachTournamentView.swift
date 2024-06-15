@@ -9,22 +9,10 @@ import SwiftUI
 
 struct EachTournamentView: View {
     @EnvironmentObject var tournaments: Tournaments
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var tournament: Tournament
-    
-    @State private var tournamentName = ""
-    @State private var location = ""
-    @State private var month = ""
-    @State private var year = ""
-    
-    @State private var prizePool = ""
-    @State private var description = ""
-    
-    @State private var selectedMonth = 1
-    @State private var selectedYear = Calendar.current.component(.year, from: Date())
-    private var months: [String] {
-        let formatter = DateFormatter()
-        return formatter.monthSymbols
-    }
     
     var body: some View {
         ScrollView {
@@ -42,7 +30,8 @@ struct EachTournamentView: View {
                         HStack {
                             Text("Tournament name:")
                             
-                            TextField("", text: $tournament.title)
+                            TextField("", text: $tournament.tournamentName)
+                                .foregroundColor(.white)
                         }
                         .foregroundColor(.lightMoreBlue)
                         .padding(.horizontal)
@@ -55,6 +44,7 @@ struct EachTournamentView: View {
                             Text("Location:")
                             
                             TextField("", text: $tournament.location)
+                                .foregroundColor(.white)
                         }
                         .foregroundColor(.lightMoreBlue)
                         .padding(.horizontal)
@@ -63,25 +53,12 @@ struct EachTournamentView: View {
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        
                         HStack {
                             Text("Date:")
                             
-                            Spacer()
-                            
-                            Picker("Month", selection: $selectedMonth) {
-                                ForEach(1..<13) { index in
-                                    Text(self.months[index - 1]).tag(index)
-                                }
-                            }
-                            
-                            Picker("Year", selection: $selectedYear) {
-                                ForEach((1900...2100).reversed(), id: \.self) { year in
-                                    Text("\(year)").tag(year)
-                                }
-                            }
+                            TextField("", text: $tournament.date)
+                                .foregroundColor(.white)
                         }
-                        .padding(.vertical, -8)
                         .foregroundColor(.lightMoreBlue)
                         .padding(.horizontal)
                     }
@@ -96,7 +73,8 @@ struct EachTournamentView: View {
                         HStack {
                             Text("Prize pool:")
                             
-                            TextField("", text: $prizePool)
+                            TextField("", text: $tournament.prizePool)
+                                .foregroundColor(.white)
                         }
                         .foregroundColor(.lightMoreBlue)
                         .padding(.horizontal)
@@ -108,7 +86,8 @@ struct EachTournamentView: View {
                         HStack {
                             Text("Description:")
                             
-                            TextField("", text: $description)
+                            TextField("", text: $tournament.description)
+                                .foregroundColor(.white)
                         }
                         .foregroundColor(.lightMoreBlue)
                         .padding(.horizontal)
@@ -118,10 +97,14 @@ struct EachTournamentView: View {
                 Spacer()
                 
                 Button(action: {
-//                    tournaments.editTournament(id: tournament.id,
-//                                              title: tournament.title,
-//                                              location: tournament.location,
-//                                              description: tournament.description)
+                    tournaments.editTournament(id: tournament.id,
+                                               tournamentName: tournament.tournamentName, 
+                                               location: tournament.location,
+                                               date: tournament.date,
+                                               prizePool: tournament.prizePool,
+                                               description: tournament.description)
+                    
+                    self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
@@ -135,6 +118,25 @@ struct EachTournamentView: View {
                 })
             }
             .padding()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    
+                }, label: {
+                    Label("", systemImage: "square.and.pencil")
+                        .foregroundColor(.red)
+                })
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    
+                }, label: {
+                    Label("", systemImage: "trash.fill")
+                        .foregroundColor(.red)
+                })
+            }
         }
     }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct TournamentsView: View {
     @EnvironmentObject var eachTournament: Tournaments
     
+    @State private var isTapped = false
+    
     var body: some View {
         ZStack(alignment: .top) {
             NavigationView {
@@ -24,21 +26,18 @@ struct TournamentsView: View {
                                             .foregroundColor(.lightBlue)
                                         
                                         VStack(alignment: .leading) {
-                                            HStack {
-                                                Text(tournament.month)
-                                                    .font(.system(size: 11))
-                                                    .foregroundColor(.white.opacity(0.5))
-                                                
-                                                Text(tournament.year)
-                                                    .font(.system(size: 11))
-                                                    .foregroundColor(.white.opacity(0.5))
-                                            }
+                                            Text(tournament.date)
+                                                .lineLimit(1)
+                                                .font(.system(size: 11))
+                                                .foregroundColor(.white.opacity(0.5))
                                             
-                                            Text(tournament.title)
+                                            Text(tournament.tournamentName)
+                                                .lineLimit(1)
                                                 .font(.system(size: 17, weight: .semibold))
                                                 .foregroundColor(.white)
                                             
                                             Text(tournament.description)
+                                                .lineLimit(1)
                                                 .font(.system(size: 15))
                                                 .foregroundColor(.white.opacity(0.7))
                                         }
@@ -62,7 +61,7 @@ struct TournamentsView: View {
                         .padding(.vertical, 24)
                     }
                     
-                    NavigationLink(destination: AddMatchView()) {
+                    NavigationLink(destination: AddTournamentView()) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)
                                 .frame(width: 40, height: 40)
@@ -78,6 +77,12 @@ struct TournamentsView: View {
                         }
                         .padding()
                     }
+                    .onDisappear {
+                        isTapped = true
+                    }
+                    .onAppear {
+                        isTapped = false
+                    }
                 }
                 .navigationTitle("Tournaments")
             }
@@ -90,10 +95,17 @@ struct TournamentsView: View {
             }
             .padding(.bottom, 48)
             
-            Rectangle()
-                .ignoresSafeArea()
-                .frame(height: 1)
-                .foregroundColor(.darkBlue)
+            VStack {
+                Rectangle()
+                    .ignoresSafeArea()
+                    .frame(height: 1)
+                    .foregroundColor(.darkBlue)
+                
+                Text("Add tournament")
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundColor(.white)
+                    .opacity(isTapped ? 1.0 : 0.0)
+            }
         }
     }
 }

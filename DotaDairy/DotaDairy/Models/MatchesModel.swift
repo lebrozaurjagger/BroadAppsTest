@@ -19,7 +19,6 @@ struct Match : Hashable, Codable, Identifiable {
 
 @MainActor class Matches : ObservableObject {
     private let USER_KEY = "A"
-    
     let date = Date()
     var matches: [Match] {
         didSet {
