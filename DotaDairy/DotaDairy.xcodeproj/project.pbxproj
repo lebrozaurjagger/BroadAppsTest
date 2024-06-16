@@ -28,7 +28,38 @@
 		642E94DB2C18FCA400478AB2 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94DA2C18FCA400478AB2 /* MatchesView.swift */; };
 		642E94DE2C18FD3500478AB2 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94DD2C18FD3500478AB2 /* ColorScheme.swift */; };
 		642E94E12C19086200478AB2 /* AddMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94E02C19086200478AB2 /* AddMatchView.swift */; };
+		643F99522C1F5E030066B542 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F99512C1F5E030066B542 /* DataModel.swift */; };
+		64A3385A2C1FAB08007BA594 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A338592C1FAB08007BA594 /* NotificationService.swift */; };
+		64A3385E2C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 64A338572C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		64E53A7E2C1ECE81009A38C5 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */; };
+		64E53A812C1ED0A9009A38C5 /* ApphudSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A802C1ED0A9009A38C5 /* ApphudSDK */; };
+		64E53A982C1ED537009A38C5 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A972C1ED537009A38C5 /* OneSignalFramework */; };
+		64E53A9A2C1ED537009A38C5 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A992C1ED537009A38C5 /* OneSignalInAppMessages */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64A3385C2C1FAB08007BA594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 642E94C02C18FC6D00478AB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64A338562C1FAB08007BA594;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		64E53A912C1ED3B0009A38C5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				64A3385E2C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6400DC322C19B780006DF41F /* TournamentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsView.swift; sourceTree = "<group>"; };
@@ -53,10 +84,28 @@
 		642E94DA2C18FCA400478AB2 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
 		642E94DD2C18FD3500478AB2 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		642E94E02C19086200478AB2 /* AddMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchView.swift; sourceTree = "<group>"; };
+		643F99512C1F5E030066B542 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		64A338572C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		64A338592C1FAB08007BA594 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		64A3385B2C1FAB08007BA594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64A338622C1FAB44007BA594 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
+		64E53A922C1ED45B009A38C5 /* DotaDairy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DotaDairy.entitlements; sourceTree = "<group>"; };
+		64E53A9C2C1F23BC009A38C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		642E94C52C18FC6D00478AB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64E53A9A2C1ED537009A38C5 /* OneSignalInAppMessages in Frameworks */,
+				64E53A982C1ED537009A38C5 /* OneSignalFramework in Frameworks */,
+				64E53A812C1ED0A9009A38C5 /* ApphudSDK in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64A338542C1FAB08007BA594 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -108,6 +157,8 @@
 			children = (
 				6400DC522C1B61E0006DF41F /* MatchesModel.swift */,
 				6400DC4C2C1A3735006DF41F /* TournamentModel.swift */,
+				64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */,
+				643F99512C1F5E030066B542 /* DataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,7 +176,9 @@
 			isa = PBXGroup;
 			children = (
 				642E94CA2C18FC6D00478AB2 /* DotaDairy */,
+				64A338582C1FAB08007BA594 /* OneSignalNotificationServiceExtension */,
 				642E94C92C18FC6D00478AB2 /* Products */,
+				64E53AAC2C1F2B3B009A38C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				642E94C82C18FC6D00478AB2 /* DotaDairy.app */,
+				64A338572C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,6 +194,8 @@
 		642E94CA2C18FC6D00478AB2 /* DotaDairy */ = {
 			isa = PBXGroup;
 			children = (
+				64E53A9C2C1F23BC009A38C5 /* Info.plist */,
+				64E53A922C1ED45B009A38C5 /* DotaDairy.entitlements */,
 				642E94CB2C18FC6D00478AB2 /* DotaDairyApp.swift */,
 				642E94D92C18FC9200478AB2 /* Views */,
 				6400DC4B2C1A3711006DF41F /* Models */,
@@ -190,6 +246,23 @@
 			path = Matches;
 			sourceTree = "<group>";
 		};
+		64A338582C1FAB08007BA594 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				64A338622C1FAB44007BA594 /* OneSignalNotificationServiceExtension.entitlements */,
+				64A338592C1FAB08007BA594 /* NotificationService.swift */,
+				64A3385B2C1FAB08007BA594 /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
+		64E53AAC2C1F2B3B009A38C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,15 +273,39 @@
 				642E94C42C18FC6D00478AB2 /* Sources */,
 				642E94C52C18FC6D00478AB2 /* Frameworks */,
 				642E94C62C18FC6D00478AB2 /* Resources */,
+				64E53A912C1ED3B0009A38C5 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64A3385D2C1FAB08007BA594 /* PBXTargetDependency */,
+			);
+			name = DotaDairy;
+			packageProductDependencies = (
+				64E53A802C1ED0A9009A38C5 /* ApphudSDK */,
+				64E53A972C1ED537009A38C5 /* OneSignalFramework */,
+				64E53A992C1ED537009A38C5 /* OneSignalInAppMessages */,
+			);
+			productName = DotaDairy;
+			productReference = 642E94C82C18FC6D00478AB2 /* DotaDairy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		64A338562C1FAB08007BA594 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64A3385F2C1FAB08007BA594 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				64A338532C1FAB08007BA594 /* Sources */,
+				64A338542C1FAB08007BA594 /* Frameworks */,
+				64A338552C1FAB08007BA594 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = DotaDairy;
-			productName = DotaDairy;
-			productReference = 642E94C82C18FC6D00478AB2 /* DotaDairy.app */;
-			productType = "com.apple.product-type.application";
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 64A338572C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -223,6 +320,9 @@
 					642E94C72C18FC6D00478AB2 = {
 						CreatedOnToolsVersion = 15.4;
 					};
+					64A338562C1FAB08007BA594 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 				};
 			};
 			buildConfigurationList = 642E94C32C18FC6D00478AB2 /* Build configuration list for PBXProject "DotaDairy" */;
@@ -234,11 +334,16 @@
 				Base,
 			);
 			mainGroup = 642E94BF2C18FC6D00478AB2;
+			packageReferences = (
+				64E53A7F2C1ED0A9009A38C5 /* XCRemoteSwiftPackageReference "ApphudSDK" */,
+				64E53A942C1ED537009A38C5 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+			);
 			productRefGroup = 642E94C92C18FC6D00478AB2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				642E94C72C18FC6D00478AB2 /* DotaDairy */,
+				64A338562C1FAB08007BA594 /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -253,6 +358,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64A338552C1FAB08007BA594 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -261,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6400DC332C19B780006DF41F /* TournamentsView.swift in Sources */,
+				64E53A7E2C1ECE81009A38C5 /* WebViewModel.swift in Sources */,
 				6400DC3A2C19B7D7006DF41F /* StatisticsView.swift in Sources */,
 				642E94DE2C18FD3500478AB2 /* ColorScheme.swift in Sources */,
 				6400DC532C1B61E0006DF41F /* MatchesModel.swift in Sources */,
@@ -273,6 +386,7 @@
 				6400DC402C19F092006DF41F /* ReviewerOnboardingView.swift in Sources */,
 				642E94CC2C18FC6D00478AB2 /* DotaDairyApp.swift in Sources */,
 				642E94E12C19086200478AB2 /* AddMatchView.swift in Sources */,
+				643F99522C1F5E030066B542 /* DataModel.swift in Sources */,
 				6400DC422C19F0A7006DF41F /* UserOnboardingView.swift in Sources */,
 				6400DC4D2C1A3735006DF41F /* TournamentModel.swift in Sources */,
 				6400DC5E2C1C77BE006DF41F /* EachTournamentView.swift in Sources */,
@@ -282,7 +396,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64A338532C1FAB08007BA594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64A3385A2C1FAB08007BA594 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64A3385D2C1FAB08007BA594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64A338562C1FAB08007BA594 /* OneSignalNotificationServiceExtension */;
+			targetProxy = 64A3385C2C1FAB08007BA594 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		642E94D42C18FC6E00478AB2 /* Debug */ = {
@@ -407,14 +537,17 @@
 		642E94D72C18FC6E00478AB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DotaDairy/DotaDairy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DotaDairy/Preview Content\"";
 				DEVELOPMENT_TEAM = 5R537FQZP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DotaDairy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dota Dairy";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -438,14 +571,17 @@
 		642E94D82C18FC6E00478AB2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DotaDairy/DotaDairy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DotaDairy/Preview Content\"";
 				DEVELOPMENT_TEAM = 5R537FQZP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DotaDairy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dota Dairy";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -460,6 +596,60 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = pkotenko.DotaDairy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		64A338602C1FAB08007BA594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5R537FQZP7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pkotenko.DotaDairy.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		64A338612C1FAB08007BA594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5R537FQZP7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pkotenko.DotaDairy.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -487,7 +677,53 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		64A3385F2C1FAB08007BA594 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64A338602C1FAB08007BA594 /* Debug */,
+				64A338612C1FAB08007BA594 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		64E53A7F2C1ED0A9009A38C5 /* XCRemoteSwiftPackageReference "ApphudSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apphud/ApphudSDK";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.8;
+			};
+		};
+		64E53A942C1ED537009A38C5 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		64E53A802C1ED0A9009A38C5 /* ApphudSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64E53A7F2C1ED0A9009A38C5 /* XCRemoteSwiftPackageReference "ApphudSDK" */;
+			productName = ApphudSDK;
+		};
+		64E53A972C1ED537009A38C5 /* OneSignalFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64E53A942C1ED537009A38C5 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalFramework;
+		};
+		64E53A992C1ED537009A38C5 /* OneSignalInAppMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64E53A942C1ED537009A38C5 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalInAppMessages;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 642E94C02C18FC6D00478AB2 /* Project object */;
 }

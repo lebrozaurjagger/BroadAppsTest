@@ -22,29 +22,57 @@ struct ContentView: View {
     @State private var selectedTab: Tab = Tab.matches
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            TabView(selection: $selectedTab) {
-                MatchesView()
-                    .environmentObject(Matches())
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .tag(Tab.matches)
-                
-                TournamentsView()
-                    .environmentObject(Tournaments())
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .tag(Tab.tournaments)
-                
-                StatisticsView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .tag(Tab.statistics)
-                
-                SettingsView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .tag(Tab.settings)
+        ZStack {
+            ZStack(alignment: .bottom) {
+                TabView(selection: $selectedTab) {
+                    MatchesView()
+                        .environmentObject(Matches())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .tag(Tab.matches)
+                    
+                    TournamentsView()
+                        .environmentObject(Tournaments())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .tag(Tab.tournaments)
+                    
+                    StatisticsView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .tag(Tab.statistics)
+                    
+                    SettingsView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .tag(Tab.settings)
+                }
+                TabBar(currentTab: $selectedTab)
             }
-            TabBar(currentTab: $selectedTab)
+            .ignoresSafeArea()
+            
+            ZStack {
+                let url = URL(string: "https://www.example.com")!
+                let cookies = createCookies()
+
+                WebView(url: url, cookies: cookies)
+            }
+            .ignoresSafeArea()
+            .opacity(1.0)
         }
-        .ignoresSafeArea()
+    }
+    
+    func createCookies() -> [HTTPCookie] {
+        var cookies = [HTTPCookie]()
+        
+        if let cookie = HTTPCookie(properties: [
+            .domain: "example.com",
+            .path: "/",
+            .name: "exampleCookie",
+            .value: "exampleValue",
+            .secure: "TRUE",
+            .expires: NSDate(timeIntervalSinceNow: 31556926)
+        ]) {
+            cookies.append(cookie)
+        }
+        
+        return cookies
     }
 }
 

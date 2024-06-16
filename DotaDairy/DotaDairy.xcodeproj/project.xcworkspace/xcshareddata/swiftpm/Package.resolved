@@ -1,0 +1,24 @@
+{
+  "originHash" : "d2e0c9e887cae98e91548f78a8f3bdfa1d288583c34974952beb082706f5459f",
+  "pins" : [
+    {
+      "identity" : "apphudsdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apphud/ApphudSDK",
+      "state" : {
+        "revision" : "eb19a5dcf7a81f7f2f277dd4a165c0c0fad78b46",
+        "version" : "3.3.8"
+      }
+    },
+    {
+      "identity" : "onesignal-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OneSignal/OneSignal-XCFramework",
+      "state" : {
+        "revision" : "5d76d27efc7a073e9a664a6b3f48fc5df47b6c66",
+        "version" : "5.2.1"
+      }
+    }
+  ],
+  "version" : 3
+}

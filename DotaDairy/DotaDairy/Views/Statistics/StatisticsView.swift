@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct StatisticsView: View {
+    @State private var textWins: String = ""
+    @State private var textDefeats: String = ""
+    @State private var textAdded: String = ""
+    @State private var textEnded: String = ""
+    @State private var textHero: String = ""
+    @State private var textPosition: String = ""
+    
     var body: some View {
         ZStack(alignment: .top) {
             NavigationView {
@@ -21,9 +28,11 @@ struct StatisticsView: View {
                                         .foregroundColor(.lightBlue)
                                     
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("23")
+                                        TextField("-----", text: $textWins)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.customGreen)
+                                            .onChange(of: textWins) { newValue in
+                                                autosave(field: "textWins", value: newValue)
+                                            }
                                         
                                         Text("Total wins")
                                             .font(.system(size: 13))
@@ -38,9 +47,11 @@ struct StatisticsView: View {
                                         .foregroundColor(.lightBlue)
                                     
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("12")
+                                        TextField("-----", text: $textDefeats)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.customRed)
+                                            .onChange(of: textDefeats) { newValue in
+                                                autosave(field: "textDefeats", value: newValue)
+                                            }
                                         
                                         Text("Total defeats")
                                             .font(.system(size: 13))
@@ -57,9 +68,11 @@ struct StatisticsView: View {
                                         .foregroundColor(.lightBlue)
                                     
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("92")
+                                        TextField("-----", text: $textAdded)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.white)
+                                            .onChange(of: textAdded) { newValue in
+                                                autosave(field: "textAdded", value: newValue)
+                                            }
                                         
                                         Text("Added tournaments")
                                             .font(.system(size: 13))
@@ -74,9 +87,11 @@ struct StatisticsView: View {
                                         .foregroundColor(.lightBlue)
                                     
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("10")
+                                        TextField("-----", text: $textEnded)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.white)
+                                            .onChange(of: textEnded) { newValue in
+                                                autosave(field: "textEnded", value: newValue)
+                                            }
                                         
                                         Text("Ended tournaments")
                                             .font(.system(size: 13))
@@ -93,9 +108,11 @@ struct StatisticsView: View {
                                         .foregroundColor(.lightBlue)
                                     
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("Arc Warden")
+                                        TextField("-----", text: $textHero)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.white)
+                                            .onChange(of: textHero) { newValue in
+                                                autosave(field: "textHero", value: newValue)
+                                            }
                                         
                                         Text("Most played hero")
                                             .font(.system(size: 13))
@@ -110,9 +127,11 @@ struct StatisticsView: View {
                                         .foregroundColor(.lightBlue)
                                     
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("Mid lane")
+                                        TextField("-----", text: $textPosition)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.white)
+                                            .onChange(of: textPosition) { newValue in
+                                                autosave(field: "textPosition", value: newValue)
+                                            }
                                         
                                         Text("Most played position")
                                             .font(.system(size: 13))
@@ -141,6 +160,13 @@ struct StatisticsView: View {
                 .frame(height: 1)
                 .foregroundColor(.darkBlue)
         }
+    }
+    
+    func autosave(field: String, value: String) {
+        // Perform your save operation here, e.g., send data to the server or save locally
+        print("Autosaving \(field): \(value)")
+        // Example: Save to UserDefaults
+        UserDefaults.standard.set(value, forKey: field)
     }
 }
 
