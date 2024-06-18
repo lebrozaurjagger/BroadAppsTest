@@ -10,6 +10,14 @@ import SwiftUI
 struct MatchesView: View {
     @EnvironmentObject var eachMatch: Matches
     
+    @State private var textWins: String = ""
+    @State private var textDefeats: String = ""
+    
+    init() {
+        _textWins = State(initialValue: UserDefaults.standard.string(forKey: "TEXT_WINS") ?? "")
+        _textDefeats = State(initialValue: UserDefaults.standard.string(forKey: "TEXT_DEFEATS") ?? "")
+    }
+    
     var body: some View {
         ZStack(alignment: .top) {
             NavigationView {
@@ -33,9 +41,11 @@ struct MatchesView: View {
                                             .font(.system(size: 15))
                                             .foregroundColor(.white)
                                         
-                                        Text("23")
+                                        TextField("-----", text: $textWins)
                                             .font(.system(size: 17, weight: .semibold))
-                                            .foregroundColor(.white)
+                                            .onChange(of: textWins) { newValue in
+                                                UserDefaults.standard.set(newValue, forKey: "TEXT_WINS_OTHER")
+                                            }
                                     }
                                     .padding(.horizontal)
                                 }
@@ -50,9 +60,11 @@ struct MatchesView: View {
                                             .font(.system(size: 15))
                                             .foregroundColor(.white)
                                         
-                                        Text("12")
+                                        TextField("-----", text: $textDefeats)
                                             .font(.system(size: 17, weight: .semibold))
-                                            .foregroundColor(.white)
+                                            .onChange(of: textDefeats) { newValue in
+                                                UserDefaults.standard.set(newValue, forKey: "TEXT_DEFEATS_OTHER")
+                                            }
                                     }
                                     .padding(.horizontal)
                                 }
@@ -99,11 +111,11 @@ struct MatchesView: View {
                                             .padding()
                                             
                                             VStack {
-                                                Text(match.dateTime)
+                                                Text(match.gameDate)
                                                     .font(.system(size: 11))
                                                     .foregroundColor(.white.opacity(0.5))
                                                 
-                                                Text(match.title)
+                                                Text(match.gameName)
                                                     .font(.system(size: 20, weight: .semibold))
                                                     .foregroundColor(.white)
                                                 
@@ -113,7 +125,7 @@ struct MatchesView: View {
                                                             .frame(width: 54, height: 20)
                                                             .foregroundColor(.lightMoreBlue)
                                                         
-                                                        Text(match.type)
+                                                        Text("placeholder")/*(match.gameType)*/
                                                             .font(.system(size: 11))
                                                             .foregroundColor(.white)
                                                     }
@@ -123,7 +135,7 @@ struct MatchesView: View {
                                                             .frame(width: 54, height: 20)
                                                             .foregroundColor(.lightMoreBlue)
                                                         
-                                                        Text("\(match.timeMatch) min.")
+                                                        Text("\(match.gameTime) min.")
                                                             .font(.system(size: 11))
                                                             .foregroundColor(.white)
                                                     }
@@ -133,7 +145,7 @@ struct MatchesView: View {
                                                             .frame(width: 54, height: 20)
                                                             .foregroundColor(.lightMoreBlue)
                                                         
-                                                        Text(match.KDA)
+                                                        Text(match.yourKDA)
                                                             .font(.system(size: 11))
                                                             .foregroundColor(.white)
                                                     }

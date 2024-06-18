@@ -1,5 +1,5 @@
 //
-//  DataModel.swift
+//  DataReceive.swift
 //  DotaDairy
 //
 //  Created by Phillip on 16.06.2024.

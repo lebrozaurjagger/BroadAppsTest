@@ -29,7 +29,7 @@ struct LoadingView: View {
                 .ignoresSafeArea()
             
             if variation == 1 {
-                Image("IconDairy")
+                Image("LogoOther")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 190)

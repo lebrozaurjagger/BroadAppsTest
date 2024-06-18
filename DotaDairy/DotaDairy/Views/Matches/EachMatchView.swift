@@ -1,22 +1,18 @@
 //
-//  AddMatchView.swift
+//  EachMatchView.swift
 //  DotaDairy
 //
-//  Created by Phillip on 12.06.2024.
+//  Created by Phillip on 18.06.2024.
 //
 
 import SwiftUI
 
-struct AddMatchView: View {
+struct EachMatchView: View {
     @EnvironmentObject var matches: Matches
     
     @Environment(\.presentationMode) var presentationMode
-    @State private var gameName = ""
-    @State private var gameDate = ""
-    @State private var gameTime = ""
-    @State private var gameDuration = ""
-    @State private var playedHero = ""
-    @State private var yourKDA = ""
+    
+    @State var match: Match
     
     var body: some View {
         ScrollView {
@@ -27,21 +23,24 @@ struct AddMatchView: View {
                         .foregroundColor(.lightBlue)
                     
                     VStack(alignment: .leading, spacing: 16) {
-                        CustomTextField(text: $gameName, placeholder: "Game name", textColor: .white)
+                        Text("Game name:")
+                            .foregroundColor(.white)
                             .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        CustomTextField(text: $gameDate, placeholder: "Game date", textColor: .white)
+                        Text("Game date:")
+                            .foregroundColor(.white)
                             .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        CustomTextField(text: $gameTime, placeholder: "Game time", textColor: .white)
+                        Text("Game time:")
+                            .foregroundColor(.white)
                             .padding(.horizontal)
                     }
                 }
@@ -63,7 +62,7 @@ struct AddMatchView: View {
 //                                }
 //                            }
                         }
-//                        .padding(.vertical, -8)
+                        .padding(.vertical, -8)
                         .foregroundColor(.lightMoreBlue)
                         .padding(.leading)
                         
@@ -82,7 +81,7 @@ struct AddMatchView: View {
 //                                }
 //                            }
                         }
-//                        .padding(.vertical, -8)
+                        .padding(.vertical, -8)
                         .foregroundColor(.lightMoreBlue)
                         .padding(.leading)
                         
@@ -90,21 +89,24 @@ struct AddMatchView: View {
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        CustomTextField(text: $gameDuration, placeholder: "Game duration", textColor: .white)
+                        Text("Location:")
+                            .foregroundColor(.white)
                             .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        CustomTextField(text: $playedHero, placeholder: "Played hero", textColor: .white)
+                        Text("Played hero:")
+                            .foregroundColor(.white)
                             .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        CustomTextField(text: $yourKDA, placeholder: "Your KDA", textColor: .white)
+                        Text("Your KDA:")
+                            .foregroundColor(.white)
                             .padding(.horizontal)
                     }
                 }
@@ -144,23 +146,20 @@ struct AddMatchView: View {
                 Spacer()
                 
                 Button(action: {
-                    withAnimation {
-                        matches.addMatch(gameName: gameName, 
-                                         gameDate: gameDate,
-                                         gameTime: gameTime,
-                                         gameDuration: gameDuration,
-                                         playedHero: playedHero,
-                                         yourKDA: yourKDA)
-                        
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
+                    matches.editMatch(id: match.id,
+                                      gameName: match.gameName,
+                                      gameDate: match.gameDate,
+                                      gameTime: match.gameTime,
+                                      gameDuration: match.gameDuration,
+                                      playedHero: match.playedHero,
+                                      yourKDA: match.yourKDA)
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
                             .frame(height: 50)
                             .foregroundColor(.darkBlue)
                         
-                        Text("Add")
+                        Text("Save")
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundColor(.white.opacity(0.5))
                     }
@@ -172,6 +171,6 @@ struct AddMatchView: View {
 }
 
 #Preview {
-    AddMatchView()
+    MatchesView()
         .environmentObject(Matches())
 }

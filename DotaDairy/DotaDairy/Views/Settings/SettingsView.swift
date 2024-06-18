@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import StoreKit
+import UIKit
 
 struct SettingsView: View {
     @StateObject var matches = Matches()
     
     @State private var confirmButton = false
+    @State private var isShareSheetPresented = false
+    
+    @AppStorage("launchCount") private var launchCount: Int = 0
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -35,10 +40,13 @@ struct SettingsView: View {
                                     .padding(.leading, 64)
                                 
                                 Button(action: {
-                                    
+                                    isShareSheetPresented = true
                                 }, label: {
                                     ListButton(title: "Share App", icon: "square.and.arrow.up.fill")
                                 })
+                                .sheet(isPresented: $isShareSheetPresented) {
+                                    ShareSheet(activityItems: ["Check out this cool SwiftUI tutorial!"])
+                                }
                                 
                                 Rectangle()
                                     .frame(height: 1)
@@ -46,7 +54,7 @@ struct SettingsView: View {
                                     .padding(.leading, 64)
                                 
                                 Button(action: {
-                                    
+                                    requestReview()
                                 }, label: {
                                     ListButton(title: "Rate Us", icon: "star.fill")
                                 })
@@ -73,6 +81,7 @@ struct SettingsView: View {
                         })
                         .padding()
                     }
+                    .padding(.top, 8)
                 }
                 .navigationTitle("Settings")
             }
@@ -89,6 +98,22 @@ struct SettingsView: View {
                 .ignoresSafeArea()
                 .frame(height: 1)
                 .foregroundColor(.darkBlue)
+        }
+        .onAppear {
+            incrementLaunchCount()
+        }
+    }
+    
+    func incrementLaunchCount() {
+        launchCount += 1
+        if launchCount == 5 {
+            requestReview()
+        }
+    }
+    
+    func requestReview() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: windowScene)
         }
     }
 }
@@ -112,5 +137,19 @@ struct ListButton: View {
         .foregroundColor(.white)
         .font(.system(size: 17, weight: .semibold))
         .padding(.horizontal)
+    }
+}
+
+struct ShareSheet: UIViewControllerRepresentable {
+    var activityItems: [Any]
+    var applicationActivities: [UIActivity]? = nil
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+        
     }
 }

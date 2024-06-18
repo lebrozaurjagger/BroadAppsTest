@@ -15,6 +15,15 @@ struct StatisticsView: View {
     @State private var textHero: String = ""
     @State private var textPosition: String = ""
     
+    init() {
+        _textWins = State(initialValue: UserDefaults.standard.string(forKey: "TEXT_WINS") ?? "")
+        _textDefeats = State(initialValue: UserDefaults.standard.string(forKey: "TEXT_DEFEATS") ?? "")
+        _textAdded = State(initialValue: UserDefaults.standard.string(forKey: "TEXT_ADDED") ?? "")
+        _textEnded = State(initialValue: UserDefaults.standard.string(forKey: "TEXT_ENDED") ?? "")
+        _textHero = State(initialValue: UserDefaults.standard.string(forKey: "TEXT_HERO") ?? "")
+        _textPosition = State(initialValue: UserDefaults.standard.string(forKey: "TEXT_POSITION") ?? "")
+    }
+    
     var body: some View {
         ZStack(alignment: .top) {
             NavigationView {
@@ -31,7 +40,7 @@ struct StatisticsView: View {
                                         TextField("-----", text: $textWins)
                                             .font(.system(size: 20, weight: .semibold))
                                             .onChange(of: textWins) { newValue in
-                                                autosave(field: "textWins", value: newValue)
+                                                UserDefaults.standard.set(newValue, forKey: "TEXT_WINS")
                                             }
                                         
                                         Text("Total wins")
@@ -49,9 +58,6 @@ struct StatisticsView: View {
                                     VStack(alignment: .leading, spacing: 4) {
                                         TextField("-----", text: $textDefeats)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .onChange(of: textDefeats) { newValue in
-                                                autosave(field: "textDefeats", value: newValue)
-                                            }
                                         
                                         Text("Total defeats")
                                             .font(.system(size: 13))
@@ -70,9 +76,6 @@ struct StatisticsView: View {
                                     VStack(alignment: .leading, spacing: 4) {
                                         TextField("-----", text: $textAdded)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .onChange(of: textAdded) { newValue in
-                                                autosave(field: "textAdded", value: newValue)
-                                            }
                                         
                                         Text("Added tournaments")
                                             .font(.system(size: 13))
@@ -89,9 +92,6 @@ struct StatisticsView: View {
                                     VStack(alignment: .leading, spacing: 4) {
                                         TextField("-----", text: $textEnded)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .onChange(of: textEnded) { newValue in
-                                                autosave(field: "textEnded", value: newValue)
-                                            }
                                         
                                         Text("Ended tournaments")
                                             .font(.system(size: 13))
@@ -110,9 +110,6 @@ struct StatisticsView: View {
                                     VStack(alignment: .leading, spacing: 4) {
                                         TextField("-----", text: $textHero)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .onChange(of: textHero) { newValue in
-                                                autosave(field: "textHero", value: newValue)
-                                            }
                                         
                                         Text("Most played hero")
                                             .font(.system(size: 13))
@@ -129,9 +126,6 @@ struct StatisticsView: View {
                                     VStack(alignment: .leading, spacing: 4) {
                                         TextField("-----", text: $textPosition)
                                             .font(.system(size: 20, weight: .semibold))
-                                            .onChange(of: textPosition) { newValue in
-                                                autosave(field: "textPosition", value: newValue)
-                                            }
                                         
                                         Text("Most played position")
                                             .font(.system(size: 13))
@@ -142,6 +136,7 @@ struct StatisticsView: View {
                             }
                         }
                         .padding()
+                        .padding(.top, 8)
                     }
                 }
                 .navigationTitle("Statistics")
@@ -160,13 +155,6 @@ struct StatisticsView: View {
                 .frame(height: 1)
                 .foregroundColor(.darkBlue)
         }
-    }
-    
-    func autosave(field: String, value: String) {
-        // Perform your save operation here, e.g., send data to the server or save locally
-        print("Autosaving \(field): \(value)")
-        // Example: Save to UserDefaults
-        UserDefaults.standard.set(value, forKey: field)
     }
 }
 

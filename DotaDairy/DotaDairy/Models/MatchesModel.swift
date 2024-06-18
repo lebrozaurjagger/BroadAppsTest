@@ -10,11 +10,12 @@ import SwiftUI
 
 struct Match : Hashable, Codable, Identifiable {
     var id = UUID()
-    var dateTime: String
-    var title: String
-    var type: String
-    var timeMatch: String
-    var KDA: String
+    var gameName: String
+    var gameDate: String
+    var gameTime: String
+    var gameDuration: String
+    var playedHero: String
+    var yourKDA: String
 }
 
 @MainActor class Matches : ObservableObject {
@@ -34,11 +35,11 @@ struct Match : Hashable, Codable, Identifiable {
                 return
             }
         }
-        matches = [Match(dateTime: "23.12.0000", title: "Temp-1", type: "RanKed", timeMatch: "33", KDA: "2/3/4")]
+        matches = [Match(gameName: "Temp", gameDate: "Temp", gameTime: "Temp", gameDuration: "Temp", playedHero: "Temp", yourKDA: "Temp")]
     }
     
-    func addMatch(title: String, description: String) {
-        let temporaryMatch = Match(dateTime: "", title: "", type: "", timeMatch: "", KDA: "")
+    func addMatch(gameName: String, gameDate: String, gameTime: String, gameDuration: String, playedHero: String, yourKDA: String) {
+        let temporaryMatch = Match(gameName: gameName, gameDate: gameDate, gameTime: gameTime, gameDuration: gameDuration, playedHero: playedHero, yourKDA: yourKDA)
         matches.insert(temporaryMatch, at: 0)
         saveData()
     }
@@ -55,14 +56,15 @@ struct Match : Hashable, Codable, Identifiable {
         matches = []
     }
     
-    func editTournament(id: UUID, dateTime: String, title: String, type: String, timeMatch: String, KDA: String) {
+    func editMatch(id: UUID, gameName: String, gameDate: String, gameTime: String, gameDuration: String, playedHero: String, yourKDA: String) {
         if let editingNote = matches.first(where: { $0.id == id }) {
             let index = matches.firstIndex(of: editingNote)
-            matches[index!].dateTime = dateTime
-            matches[index!].title = title
-            matches[index!].type = type
-            matches[index!].timeMatch = timeMatch
-            matches[index!].KDA = KDA
+            matches[index!].gameName = gameName
+            matches[index!].gameDate = gameDate
+            matches[index!].gameTime = gameTime
+            matches[index!].gameDuration = gameDuration
+            matches[index!].playedHero = playedHero
+            matches[index!].yourKDA = yourKDA
         }
     }
 }

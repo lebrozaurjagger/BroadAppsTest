@@ -43,6 +43,12 @@ struct Tournament : Hashable, Codable, Identifiable {
         saveData()
     }
     
+    private func saveData() {
+        if let encodedTournament = try? JSONEncoder().encode(tournaments) {
+            UserDefaults.standard.set(encodedTournament, forKey: USER_KEY)
+        }
+    }
+    
     func editTournament(id: UUID, tournamentName: String, location: String, date: String, prizePool: String, description: String) {
         if let editingTournament = tournaments.first(where: { $0.id == id }) {
             let index = tournaments.firstIndex(of: editingTournament)
@@ -51,12 +57,6 @@ struct Tournament : Hashable, Codable, Identifiable {
             tournaments[index!].date = date
             tournaments[index!].prizePool = prizePool
             tournaments[index!].description = description
-        }
-    }
-    
-    private func saveData() {
-        if let encodedTournament = try? JSONEncoder().encode(tournaments) {
-            UserDefaults.standard.set(encodedTournament, forKey: USER_KEY)
         }
     }
 }

@@ -21,6 +21,7 @@
 		6400DC572C1BA66A006DF41F /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC562C1BA66A006DF41F /* NotificationsView.swift */; };
 		6400DC5B2C1BBF8F006DF41F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */; };
 		6400DC5E2C1C77BE006DF41F /* EachTournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */; };
+		642D0E282C2205D600A978FF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D0E272C2205D600A978FF /* HomeView.swift */; };
 		642E94CC2C18FC6D00478AB2 /* DotaDairyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94CB2C18FC6D00478AB2 /* DotaDairyApp.swift */; };
 		642E94CE2C18FC6D00478AB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94CD2C18FC6D00478AB2 /* ContentView.swift */; };
 		642E94D02C18FC6E00478AB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642E94CF2C18FC6E00478AB2 /* Assets.xcassets */; };
@@ -28,9 +29,16 @@
 		642E94DB2C18FCA400478AB2 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94DA2C18FCA400478AB2 /* MatchesView.swift */; };
 		642E94DE2C18FD3500478AB2 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94DD2C18FD3500478AB2 /* ColorScheme.swift */; };
 		642E94E12C19086200478AB2 /* AddMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94E02C19086200478AB2 /* AddMatchView.swift */; };
-		643F99522C1F5E030066B542 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F99512C1F5E030066B542 /* DataModel.swift */; };
+		643F99522C1F5E030066B542 /* DataReceive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F99512C1F5E030066B542 /* DataReceive.swift */; };
 		64A3385A2C1FAB08007BA594 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A338592C1FAB08007BA594 /* NotificationService.swift */; };
 		64A3385E2C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 64A338572C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		64A338652C2051AF007BA594 /* AppMetricaAdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 64A338642C2051AF007BA594 /* AppMetricaAdSupport */; };
+		64A338672C2051AF007BA594 /* AppMetricaCore in Frameworks */ = {isa = PBXBuildFile; productRef = 64A338662C2051AF007BA594 /* AppMetricaCore */; };
+		64A338692C2051AF007BA594 /* AppMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 64A338682C2051AF007BA594 /* AppMetricaCrashes */; };
+		64A3386B2C2051AF007BA594 /* AppMetricaWebKit in Frameworks */ = {isa = PBXBuildFile; productRef = 64A3386A2C2051AF007BA594 /* AppMetricaWebKit */; };
+		64A3386E2C2051F4007BA594 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 64A3386D2C2051F4007BA594 /* FirebaseRemoteConfig */; };
+		64A5A8812C20A2B600EF25CA /* DataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A5A8802C20A2B600EF25CA /* DataSend.swift */; };
+		64A5A8832C21071100EF25CA /* EachMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A5A8822C21071100EF25CA /* EachMatchView.swift */; };
 		64E53A7E2C1ECE81009A38C5 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */; };
 		64E53A812C1ED0A9009A38C5 /* ApphudSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A802C1ED0A9009A38C5 /* ApphudSDK */; };
 		64E53A982C1ED537009A38C5 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A972C1ED537009A38C5 /* OneSignalFramework */; };
@@ -76,6 +84,7 @@
 		6400DC562C1BA66A006DF41F /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachTournamentView.swift; sourceTree = "<group>"; };
+		642D0E272C2205D600A978FF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		642E94C82C18FC6D00478AB2 /* DotaDairy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotaDairy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642E94CB2C18FC6D00478AB2 /* DotaDairyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotaDairyApp.swift; sourceTree = "<group>"; };
 		642E94CD2C18FC6D00478AB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,11 +93,13 @@
 		642E94DA2C18FCA400478AB2 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
 		642E94DD2C18FD3500478AB2 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		642E94E02C19086200478AB2 /* AddMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchView.swift; sourceTree = "<group>"; };
-		643F99512C1F5E030066B542 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		643F99512C1F5E030066B542 /* DataReceive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReceive.swift; sourceTree = "<group>"; };
 		64A338572C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A338592C1FAB08007BA594 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		64A3385B2C1FAB08007BA594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64A338622C1FAB44007BA594 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		64A5A8802C20A2B600EF25CA /* DataSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSend.swift; sourceTree = "<group>"; };
+		64A5A8822C21071100EF25CA /* EachMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachMatchView.swift; sourceTree = "<group>"; };
 		64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		64E53A922C1ED45B009A38C5 /* DotaDairy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DotaDairy.entitlements; sourceTree = "<group>"; };
 		64E53A9C2C1F23BC009A38C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -99,9 +110,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64A338692C2051AF007BA594 /* AppMetricaCrashes in Frameworks */,
 				64E53A9A2C1ED537009A38C5 /* OneSignalInAppMessages in Frameworks */,
 				64E53A982C1ED537009A38C5 /* OneSignalFramework in Frameworks */,
+				64A3386B2C2051AF007BA594 /* AppMetricaWebKit in Frameworks */,
+				64A338672C2051AF007BA594 /* AppMetricaCore in Frameworks */,
 				64E53A812C1ED0A9009A38C5 /* ApphudSDK in Frameworks */,
+				64A338652C2051AF007BA594 /* AppMetricaAdSupport in Frameworks */,
+				64A3386E2C2051F4007BA594 /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +174,7 @@
 				6400DC522C1B61E0006DF41F /* MatchesModel.swift */,
 				6400DC4C2C1A3735006DF41F /* TournamentModel.swift */,
 				64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */,
-				643F99512C1F5E030066B542 /* DataModel.swift */,
+				64A3386F2C205995007BA594 /* JSON */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				642E94CD2C18FC6D00478AB2 /* ContentView.swift */,
+				642D0E272C2205D600A978FF /* HomeView.swift */,
 				6400DC3E2C19F05D006DF41F /* Onboardings */,
 				642E94DF2C19083E00478AB2 /* Matches */,
 				6400DC312C19B728006DF41F /* Tournaments */,
@@ -242,6 +259,7 @@
 			children = (
 				642E94DA2C18FCA400478AB2 /* MatchesView.swift */,
 				642E94E02C19086200478AB2 /* AddMatchView.swift */,
+				64A5A8822C21071100EF25CA /* EachMatchView.swift */,
 			);
 			path = Matches;
 			sourceTree = "<group>";
@@ -254,6 +272,15 @@
 				64A3385B2C1FAB08007BA594 /* Info.plist */,
 			);
 			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
+		64A3386F2C205995007BA594 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				643F99512C1F5E030066B542 /* DataReceive.swift */,
+				64A5A8802C20A2B600EF25CA /* DataSend.swift */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		64E53AAC2C1F2B3B009A38C5 /* Frameworks */ = {
@@ -285,6 +312,11 @@
 				64E53A802C1ED0A9009A38C5 /* ApphudSDK */,
 				64E53A972C1ED537009A38C5 /* OneSignalFramework */,
 				64E53A992C1ED537009A38C5 /* OneSignalInAppMessages */,
+				64A338642C2051AF007BA594 /* AppMetricaAdSupport */,
+				64A338662C2051AF007BA594 /* AppMetricaCore */,
+				64A338682C2051AF007BA594 /* AppMetricaCrashes */,
+				64A3386A2C2051AF007BA594 /* AppMetricaWebKit */,
+				64A3386D2C2051F4007BA594 /* FirebaseRemoteConfig */,
 			);
 			productName = DotaDairy;
 			productReference = 642E94C82C18FC6D00478AB2 /* DotaDairy.app */;
@@ -337,6 +369,8 @@
 			packageReferences = (
 				64E53A7F2C1ED0A9009A38C5 /* XCRemoteSwiftPackageReference "ApphudSDK" */,
 				64E53A942C1ED537009A38C5 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+				64A338632C2051AF007BA594 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */,
+				64A3386C2C2051F4007BA594 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 642E94C92C18FC6D00478AB2 /* Products */;
 			projectDirPath = "";
@@ -381,16 +415,19 @@
 				6400DC5B2C1BBF8F006DF41F /* CustomTextField.swift in Sources */,
 				642E94CE2C18FC6D00478AB2 /* ContentView.swift in Sources */,
 				6400DC4A2C1A1F13006DF41F /* LoadingView.swift in Sources */,
+				64A5A8832C21071100EF25CA /* EachMatchView.swift in Sources */,
 				6400DC512C1A6898006DF41F /* NotchChecker.swift in Sources */,
 				642E94DB2C18FCA400478AB2 /* MatchesView.swift in Sources */,
 				6400DC402C19F092006DF41F /* ReviewerOnboardingView.swift in Sources */,
 				642E94CC2C18FC6D00478AB2 /* DotaDairyApp.swift in Sources */,
+				64A5A8812C20A2B600EF25CA /* DataSend.swift in Sources */,
 				642E94E12C19086200478AB2 /* AddMatchView.swift in Sources */,
-				643F99522C1F5E030066B542 /* DataModel.swift in Sources */,
+				643F99522C1F5E030066B542 /* DataReceive.swift in Sources */,
 				6400DC422C19F0A7006DF41F /* UserOnboardingView.swift in Sources */,
 				6400DC4D2C1A3735006DF41F /* TournamentModel.swift in Sources */,
 				6400DC5E2C1C77BE006DF41F /* EachTournamentView.swift in Sources */,
 				6400DC3D2C19B7F5006DF41F /* SettingsView.swift in Sources */,
+				642D0E282C2205D600A978FF /* HomeView.swift in Sources */,
 				6400DC4F2C1A4850006DF41F /* CustomTabBar.swift in Sources */,
 				6400DC572C1BA66A006DF41F /* NotificationsView.swift in Sources */,
 			);
@@ -548,7 +585,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DotaDairy/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Dota Dairy";
+				INFOPLIST_KEY_CFBundleDisplayName = "Esport Insight Tracker\nEsport Insight Tracker\nEsport Insight Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -582,7 +619,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DotaDairy/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Dota Dairy";
+				INFOPLIST_KEY_CFBundleDisplayName = "Esport Insight Tracker\nEsport Insight Tracker\nEsport Insight Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -689,6 +726,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		64A338632C2051AF007BA594 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/appmetrica/appmetrica-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
+		64A3386C2C2051F4007BA594 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.27.0;
+			};
+		};
 		64E53A7F2C1ED0A9009A38C5 /* XCRemoteSwiftPackageReference "ApphudSDK" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apphud/ApphudSDK";
@@ -708,6 +761,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		64A338642C2051AF007BA594 /* AppMetricaAdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64A338632C2051AF007BA594 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
+			productName = AppMetricaAdSupport;
+		};
+		64A338662C2051AF007BA594 /* AppMetricaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64A338632C2051AF007BA594 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
+			productName = AppMetricaCore;
+		};
+		64A338682C2051AF007BA594 /* AppMetricaCrashes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64A338632C2051AF007BA594 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
+			productName = AppMetricaCrashes;
+		};
+		64A3386A2C2051AF007BA594 /* AppMetricaWebKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64A338632C2051AF007BA594 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
+			productName = AppMetricaWebKit;
+		};
+		64A3386D2C2051F4007BA594 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64A3386C2C2051F4007BA594 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
 		64E53A802C1ED0A9009A38C5 /* ApphudSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 64E53A7F2C1ED0A9009A38C5 /* XCRemoteSwiftPackageReference "ApphudSDK" */;
