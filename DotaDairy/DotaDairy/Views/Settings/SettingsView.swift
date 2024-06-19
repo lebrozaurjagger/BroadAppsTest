@@ -8,12 +8,14 @@
 import SwiftUI
 import StoreKit
 import UIKit
+import WebKit
 
 struct SettingsView: View {
     @StateObject var matches = Matches()
     
     @State private var confirmButton = false
     @State private var isShareSheetPresented = false
+    @State private var isWebViewPresented = false
     
     @AppStorage("launchCount") private var launchCount: Int = 0
     
@@ -29,10 +31,13 @@ struct SettingsView: View {
                             
                             VStack(spacing: 16) {
                                 Button(action: {
-                                    
+                                    isWebViewPresented = true
                                 }, label: {
                                     ListButton(title: "Usage Policy", icon: "doc.text.fill")
                                 })
+                                .sheet(isPresented: $isWebViewPresented) {
+                                    WebView(url: URL(string: "https://www.termsfeed.com/live/4a9582a3-fa8c-4ea5-a372-89bd3d035873")!, cookies: [HTTPCookie]())
+                                }
                                 
                                 Rectangle()
                                     .frame(height: 1)

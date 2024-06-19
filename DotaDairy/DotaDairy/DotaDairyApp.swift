@@ -12,13 +12,8 @@ import Firebase
 import FirebaseRemoteConfig
 import AppMetricaCore
 
-
 @main
 struct DotaDairyApp: App {
-    init() {
-        FirebaseApp.configure()
-    }
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject private var deviceInfoProvider = DeviceInfoProvider()
@@ -35,17 +30,15 @@ struct DotaDairyApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//        Apphud.start(apiKey: "ApiKey")
-//        
-//        OneSignal.initialize("YOUR_ONESIGNAL_APP_ID", withLaunchOptions: launchOptions)
-//        OneSignal.Notifications.requestPermission({ accepted in
-//            print("User accepted notifications: \(accepted)")
-//        }, fallbackToSettings: true)
-//        
-//        let configuration = AppMetricaConfiguration(apiKey: "API key")
-//        AppMetrica.activate(with: configuration!)
-//        
-//        FirebaseApp.configure()
+        Apphud.start(apiKey: "app_cpuZwEjCHy6wPe9UURFAFecknshYMe")
+
+        OneSignal.initialize("77a78876-ec63-4f23-b5c1-106a02f88a5c", withLaunchOptions: launchOptions)
+        OneSignal.login(Apphud.userID())
+
+        let configuration = AppMetricaConfiguration(apiKey: "8e994e6a-cfc9-46ce-b73e-8cc66fb7f24e")
+        AppMetrica.activate(with: configuration!)
+        
+        FirebaseApp.configure()
         
         return true
     }

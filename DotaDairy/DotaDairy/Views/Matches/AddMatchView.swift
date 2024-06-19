@@ -21,6 +21,10 @@ struct AddMatchView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                Rectangle()
+                    .frame(height: 28)
+                    .foregroundColor(.clear)
+                
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(height: 162)

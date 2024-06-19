@@ -22,6 +22,7 @@
 		6400DC5B2C1BBF8F006DF41F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */; };
 		6400DC5E2C1C77BE006DF41F /* EachTournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */; };
 		642D0E282C2205D600A978FF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642D0E272C2205D600A978FF /* HomeView.swift */; };
+		642D0E2F2C23362F00A978FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 642D0E2E2C23362F00A978FF /* GoogleService-Info.plist */; };
 		642E94CC2C18FC6D00478AB2 /* DotaDairyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94CB2C18FC6D00478AB2 /* DotaDairyApp.swift */; };
 		642E94CE2C18FC6D00478AB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94CD2C18FC6D00478AB2 /* ContentView.swift */; };
 		642E94D02C18FC6E00478AB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 642E94CF2C18FC6E00478AB2 /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 		6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachTournamentView.swift; sourceTree = "<group>"; };
 		642D0E272C2205D600A978FF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		642D0E2E2C23362F00A978FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		642E94C82C18FC6D00478AB2 /* DotaDairy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotaDairy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		642E94CB2C18FC6D00478AB2 /* DotaDairyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotaDairyApp.swift; sourceTree = "<group>"; };
 		642E94CD2C18FC6D00478AB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				64E53A9C2C1F23BC009A38C5 /* Info.plist */,
+				642D0E2E2C23362F00A978FF /* GoogleService-Info.plist */,
 				64E53A922C1ED45B009A38C5 /* DotaDairy.entitlements */,
 				642E94CB2C18FC6D00478AB2 /* DotaDairyApp.swift */,
 				642E94D92C18FC9200478AB2 /* Views */,
@@ -389,6 +392,7 @@
 			files = (
 				642E94D32C18FC6E00478AB2 /* Preview Assets.xcassets in Resources */,
 				642E94D02C18FC6E00478AB2 /* Assets.xcassets in Resources */,
+				642D0E2F2C23362F00A978FF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

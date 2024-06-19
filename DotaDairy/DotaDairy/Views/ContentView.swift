@@ -8,30 +8,24 @@
 import SwiftUI
 import Firebase
 import FirebaseRemoteConfig
+import WebKit
 
 struct ContentView: View {
-    @State private var showLoadingView = true
-    @State private var navigateToWebView = false
-    @State private var lastDate: Date?
-    @State private var isDead = false
-    @State private var timer: Timer?
+    @State private var navigateToHome: Bool?
+    @State private var remoteConfigDate: Date = Date()
+    @State private var isDead: Bool = false
     
     var body: some View {
-        VStack {
-            if showLoadingView {
-                LoadingView()
-                    .onAppear {
-                        fetchRemoteConfigValues()
-                    }
-            } else if navigateToWebView {
-                ZStack {
-                    let url = URL(string: "https://www.example.com")!
-                    let cookies = createCookies()
-
-                    WebView(url: url, cookies: cookies)
-                }
-                .ignoresSafeArea()
+        if let navigateToHome = navigateToHome {
+            if navigateToHome {
+                HomeView()
+            } else {
+                WebView(url: URL(string: "https://www.example.com")!, cookies: createCookies())
+                    .ignoresSafeArea()
             }
+        } else {
+            LoadingView()
+                .onAppear()
         }
     }
     
@@ -52,61 +46,90 @@ struct ContentView: View {
         return cookies
     }
     
-    func fetchRemoteConfigValues() {
+    func saveCookies(_ cookies: [HTTPCookie]) {
+        let cookieStorage = HTTPCookieStorage.shared
+        for cookie in cookies {
+            cookieStorage.setCookie(cookie)
+        }
+    }
+    
+    func fetchRemoteConfigDate(completion: @escaping (Bool) -> Void) {
         let remoteConfig = RemoteConfig.remoteConfig()
-        remoteConfig.fetchAndActivate { status, error in
-            if error == nil {
-                if let lastDateString = remoteConfig["lastDate"].stringValue {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MM/dd/yyyy"
-                    self.lastDate = dateFormatter.date(from: lastDateString)
+        remoteConfig.fetch { status, error in
+            if status == .success {
+                remoteConfig.activate { _, _ in
+                    if let dateString = remoteConfig["lastDate"].stringValue,
+                       let date = ISO8601DateFormatter().date(from: dateString) {
+                        self.remoteConfigDate = date
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
                 }
-                self.isDead = remoteConfig["isDead"].boolValue
-                self.checkDatesAndMakeRequest()
+            } else {
+                completion(false)
             }
         }
     }
     
-    func checkDatesAndMakeRequest() {
-        guard let lastDate = lastDate else {
-            return
-        }
-        
-        let currentDate = Date()
-        if currentDate < lastDate {
-            self.showLoadingView = false
-        } else {
-            makeServerRequest()
+    func makeServerRequest(completion: @escaping (Bool) -> Void) {
+        // Implement your server request logic here and call completion with true or false
+        // For now, we simulate a server request
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+            completion(true) // Simulate server response
         }
     }
     
-    func makeServerRequest() {
-        self.timer = Timer.scheduledTimer(withTimeInterval: 7.0, repeats: false) { _ in
-            self.handleTimeout()
+    func startCountdownAndRequest() {
+        let dispatchGroup = DispatchGroup()
+        var serverResponse: Bool? = nil
+        
+        dispatchGroup.enter()
+        // Make server request here (pseudo-code)
+        makeServerRequest { response in
+            serverResponse = response
+            dispatchGroup.leave()
         }
         
-        // Simulate a server request
-        DispatchQueue.global().asyncAfter(deadline: .now() + 3) { // Simulating server response in 3 seconds
-            let serverResponse = true // This would be the actual server response
-            
-            DispatchQueue.main.async {
-                self.timer?.invalidate()
-                self.timer = nil
-                self.showLoadingView = false
-                
-                if serverResponse {
-                    
+        // Start countdown
+        DispatchQueue.global().asyncAfter(deadline: .now() + 7) {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            if let serverResponse = serverResponse {
+                self.navigateToHome = serverResponse
+            } else {
+                // Fetch `isDead` from Remote Config
+                let remoteConfig = RemoteConfig.remoteConfig()
+                if remoteConfig["isDead"].boolValue {
+                    self.navigateToHome = false
                 } else {
-                    self.navigateToWebView = true
+                    self.navigateToHome = true
                 }
             }
         }
     }
     
-    func handleTimeout() {
-        self.showLoadingView = false
-        if isDead {
-            self.navigateToWebView = true
+    func checkDateAndFetch() {
+        // Fetch remote config date
+        fetchRemoteConfigDate { success in
+            guard success else {
+                // Handle error
+                return
+            }
+            
+            // Calculate date difference
+            let currentDate = Date()
+            let deferredDate = Calendar.current.date(byAdding: .day, value: 3, to: remoteConfigDate)!
+            
+            if currentDate < deferredDate {
+                // Date is within 2-3 days, no server request, navigate immediately
+                self.navigateToHome = true
+            } else {
+                // Date is past 2-3 days, make server request and start countdown
+                startCountdownAndRequest()
+            }
         }
     }
 }
