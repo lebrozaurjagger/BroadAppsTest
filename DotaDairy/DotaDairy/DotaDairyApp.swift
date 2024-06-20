@@ -120,8 +120,42 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     func sendData(_ jsonData: Data) {
-        // Implement your data sending logic here
-        // For example, you can use URLSession to send data to your server
+        guard let url = URL(string: "codegeniuslab.space/app/x1xb4tt") else {
+            print("Invalid URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let session = URLSession.shared
+
+        let task = session.uploadTask(with: request, from: jsonData) { data, response, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("Invalid response")
+                return
+            }
+
+            if httpResponse.statusCode == 200 {
+                print("Data sent successfully!")
+            } else {
+                print("Server error: \(httpResponse.statusCode)")
+            }
+
+            if let data = data {
+                if let responseString = String(data: data, encoding: .utf8) {
+                    print("Response: \(responseString)")
+                }
+            }
+        }
+        
+        task.resume()
     }
     
     func isVPNConnected() -> Bool {

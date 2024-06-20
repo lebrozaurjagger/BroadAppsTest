@@ -15,26 +15,20 @@ struct WebView: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
 
-        // Setting cookies
         let dataStore = WKWebsiteDataStore.nonPersistent()
         for cookie in cookies {
             dataStore.httpCookieStore.setCookie(cookie)
         }
 
-        // Configure the WebView with the data store containing cookies
         let config = WKWebViewConfiguration()
         config.websiteDataStore = dataStore
 
-        // Creating the WebView with the configuration
         let webViewWithCookies = WKWebView(frame: .zero, configuration: config)
 
-        // Load the URL request
         let request = URLRequest(url: url)
         webViewWithCookies.load(request)
         return webViewWithCookies
     }
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        // Handle updates to the UIViewRepresentable
-    }
+    func updateUIView(_ uiView: WKWebView, context: Context) {  }
 }

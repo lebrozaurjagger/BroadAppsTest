@@ -73,7 +73,8 @@ struct ContentView: View {
     
     func makeServerRequest(completion: @escaping (Bool) -> Void) {
         // Implement your server request logic here and call completion with true or false
-        // For now, we simulate a server request
+        // Simulation of a server request
+        
         DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
             completion(true) // Simulate server response
         }
@@ -90,7 +91,6 @@ struct ContentView: View {
             dispatchGroup.leave()
         }
         
-        // Start countdown
         DispatchQueue.global().asyncAfter(deadline: .now() + 7) {
             dispatchGroup.leave()
         }
@@ -111,22 +111,18 @@ struct ContentView: View {
     }
     
     func checkDateAndFetch() {
-        // Fetch remote config date
         fetchRemoteConfigDate { success in
             guard success else {
                 // Handle error
                 return
             }
             
-            // Calculate date difference
             let currentDate = Date()
             let deferredDate = Calendar.current.date(byAdding: .day, value: 3, to: remoteConfigDate)!
             
             if currentDate < deferredDate {
-                // Date is within 3 days, no server request, navigate immediately
                 self.navigateToHome = true
             } else {
-                // Date is past 3 days, make server request and start countdown
                 startCountdownAndRequest()
             }
         }
