@@ -40,8 +40,9 @@ struct MatchesView: View {
                                         Text("Victories")
                                             .font(.system(size: 15))
                                             .foregroundColor(.white)
-                                        
-                                        TextField("-----", text: $textWins)
+//
+                                        CustomTextField(text: $textWins, placeholder: "-----", textColor: .customGreen)
+                                            .foregroundColor(.customGreen)
                                             .font(.system(size: 17, weight: .semibold))
                                             .onChange(of: textWins) { newValue in
                                                 UserDefaults.standard.set(newValue, forKey: "TEXT_WINS_OTHER")
@@ -60,7 +61,8 @@ struct MatchesView: View {
                                             .font(.system(size: 15))
                                             .foregroundColor(.white)
                                         
-                                        TextField("-----", text: $textDefeats)
+                                        CustomTextField(text: $textDefeats, placeholder: "-----", textColor: .customRed)
+                                            .foregroundColor(.customRed)
                                             .font(.system(size: 17, weight: .semibold))
                                             .onChange(of: textDefeats) { newValue in
                                                 UserDefaults.standard.set(newValue, forKey: "TEXT_DEFEATS_OTHER")
@@ -79,7 +81,7 @@ struct MatchesView: View {
                             
                             VStack(spacing: 12) {
                                 ForEach(eachMatch.matches) { match in
-                                    NavigationLink(destination: AddMatchView()) {
+                                    NavigationLink(destination: EachMatchView(match: match)) {
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 10)
                                                 .frame(height: 103)
@@ -125,7 +127,7 @@ struct MatchesView: View {
                                                             .frame(width: 54, height: 20)
                                                             .foregroundColor(.lightMoreBlue)
                                                         
-                                                        Text("placeholder")/*(match.gameType)*/
+                                                        Text("temp")/*(match.gameType)*/
                                                             .font(.system(size: 11))
                                                             .foregroundColor(.white)
                                                     }

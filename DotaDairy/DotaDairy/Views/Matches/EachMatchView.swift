@@ -27,25 +27,40 @@ struct EachMatchView: View {
                         .foregroundColor(.lightBlue)
                     
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Game name:")
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Game name:")
+                            
+                            TextField("", text: $match.gameName)
+                                .foregroundColor(.white)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Game date:")
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Game date:")
+                            
+                            TextField("", text: $match.gameDate)
+                                .foregroundColor(.white)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Game time:")
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Game time:")
+                            
+                            TextField("", text: $match.gameTime)
+                                .foregroundColor(.white)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                     }
                 }
                 
@@ -66,7 +81,7 @@ struct EachMatchView: View {
 //                                }
 //                            }
                         }
-                        .padding(.vertical, -8)
+//                        .padding(.vertical, -8)
                         .foregroundColor(.lightMoreBlue)
                         .padding(.leading)
                         
@@ -85,7 +100,7 @@ struct EachMatchView: View {
 //                                }
 //                            }
                         }
-                        .padding(.vertical, -8)
+//                        .padding(.vertical, -8)
                         .foregroundColor(.lightMoreBlue)
                         .padding(.leading)
                         
@@ -93,25 +108,40 @@ struct EachMatchView: View {
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Location:")
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Game duration:")
+                            
+                            TextField("", text: $match.gameDuration)
+                                .foregroundColor(.white)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Played hero:")
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Played hero:")
+                            
+                            TextField("", text: $match.playedHero)
+                                .foregroundColor(.white)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                         
                         Rectangle()
                             .frame(height: 1)
                             .foregroundColor(.lightMoreBlue)
                         
-                        Text("Your KDA:")
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
+                        HStack {
+                            Text("Your KDA:")
+                            
+                            TextField("", text: $match.yourKDA)
+                                .foregroundColor(.white)
+                        }
+                        .foregroundColor(.lightMoreBlue)
+                        .padding(.horizontal)
                     }
                 }
                 

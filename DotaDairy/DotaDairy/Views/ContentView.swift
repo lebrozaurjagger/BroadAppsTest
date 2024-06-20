@@ -25,7 +25,6 @@ struct ContentView: View {
             }
         } else {
             LoadingView()
-                .onAppear()
         }
     }
     
@@ -124,10 +123,10 @@ struct ContentView: View {
             let deferredDate = Calendar.current.date(byAdding: .day, value: 3, to: remoteConfigDate)!
             
             if currentDate < deferredDate {
-                // Date is within 2-3 days, no server request, navigate immediately
+                // Date is within 3 days, no server request, navigate immediately
                 self.navigateToHome = true
             } else {
-                // Date is past 2-3 days, make server request and start countdown
+                // Date is past 3 days, make server request and start countdown
                 startCountdownAndRequest()
             }
         }

@@ -30,7 +30,6 @@
 		642E94DB2C18FCA400478AB2 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94DA2C18FCA400478AB2 /* MatchesView.swift */; };
 		642E94DE2C18FD3500478AB2 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94DD2C18FD3500478AB2 /* ColorScheme.swift */; };
 		642E94E12C19086200478AB2 /* AddMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642E94E02C19086200478AB2 /* AddMatchView.swift */; };
-		643F99522C1F5E030066B542 /* DataReceive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F99512C1F5E030066B542 /* DataReceive.swift */; };
 		64A3385A2C1FAB08007BA594 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A338592C1FAB08007BA594 /* NotificationService.swift */; };
 		64A3385E2C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 64A338572C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		64A338652C2051AF007BA594 /* AppMetricaAdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 64A338642C2051AF007BA594 /* AppMetricaAdSupport */; };
@@ -38,7 +37,6 @@
 		64A338692C2051AF007BA594 /* AppMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 64A338682C2051AF007BA594 /* AppMetricaCrashes */; };
 		64A3386B2C2051AF007BA594 /* AppMetricaWebKit in Frameworks */ = {isa = PBXBuildFile; productRef = 64A3386A2C2051AF007BA594 /* AppMetricaWebKit */; };
 		64A3386E2C2051F4007BA594 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 64A3386D2C2051F4007BA594 /* FirebaseRemoteConfig */; };
-		64A5A8812C20A2B600EF25CA /* DataSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A5A8802C20A2B600EF25CA /* DataSend.swift */; };
 		64A5A8832C21071100EF25CA /* EachMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A5A8822C21071100EF25CA /* EachMatchView.swift */; };
 		64E53A7E2C1ECE81009A38C5 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */; };
 		64E53A812C1ED0A9009A38C5 /* ApphudSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A802C1ED0A9009A38C5 /* ApphudSDK */; };
@@ -95,12 +93,10 @@
 		642E94DA2C18FCA400478AB2 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
 		642E94DD2C18FD3500478AB2 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		642E94E02C19086200478AB2 /* AddMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchView.swift; sourceTree = "<group>"; };
-		643F99512C1F5E030066B542 /* DataReceive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReceive.swift; sourceTree = "<group>"; };
 		64A338572C1FAB08007BA594 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A338592C1FAB08007BA594 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		64A3385B2C1FAB08007BA594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64A338622C1FAB44007BA594 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
-		64A5A8802C20A2B600EF25CA /* DataSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSend.swift; sourceTree = "<group>"; };
 		64A5A8822C21071100EF25CA /* EachMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachMatchView.swift; sourceTree = "<group>"; };
 		64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		64E53A922C1ED45B009A38C5 /* DotaDairy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DotaDairy.entitlements; sourceTree = "<group>"; };
@@ -176,18 +172,8 @@
 				6400DC522C1B61E0006DF41F /* MatchesModel.swift */,
 				6400DC4C2C1A3735006DF41F /* TournamentModel.swift */,
 				64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */,
-				64A3386F2C205995007BA594 /* JSON */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		6400DC5C2C1BC0DD006DF41F /* Design */ = {
-			isa = PBXGroup;
-			children = (
-				6400DC4E2C1A4850006DF41F /* CustomTabBar.swift */,
-				6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */,
-			);
-			path = Design;
 			sourceTree = "<group>";
 		};
 		642E94BF2C18FC6D00478AB2 = {
@@ -252,7 +238,8 @@
 			children = (
 				642E94DD2C18FD3500478AB2 /* ColorScheme.swift */,
 				6400DC502C1A6898006DF41F /* NotchChecker.swift */,
-				6400DC5C2C1BC0DD006DF41F /* Design */,
+				6400DC4E2C1A4850006DF41F /* CustomTabBar.swift */,
+				6400DC5A2C1BBF8F006DF41F /* CustomTextField.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -275,15 +262,6 @@
 				64A3385B2C1FAB08007BA594 /* Info.plist */,
 			);
 			path = OneSignalNotificationServiceExtension;
-			sourceTree = "<group>";
-		};
-		64A3386F2C205995007BA594 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				643F99512C1F5E030066B542 /* DataReceive.swift */,
-				64A5A8802C20A2B600EF25CA /* DataSend.swift */,
-			);
-			path = JSON;
 			sourceTree = "<group>";
 		};
 		64E53AAC2C1F2B3B009A38C5 /* Frameworks */ = {
@@ -424,9 +402,7 @@
 				642E94DB2C18FCA400478AB2 /* MatchesView.swift in Sources */,
 				6400DC402C19F092006DF41F /* ReviewerOnboardingView.swift in Sources */,
 				642E94CC2C18FC6D00478AB2 /* DotaDairyApp.swift in Sources */,
-				64A5A8812C20A2B600EF25CA /* DataSend.swift in Sources */,
 				642E94E12C19086200478AB2 /* AddMatchView.swift in Sources */,
-				643F99522C1F5E030066B542 /* DataReceive.swift in Sources */,
 				6400DC422C19F0A7006DF41F /* UserOnboardingView.swift in Sources */,
 				6400DC4D2C1A3735006DF41F /* TournamentModel.swift in Sources */,
 				6400DC5E2C1C77BE006DF41F /* EachTournamentView.swift in Sources */,

@@ -123,15 +123,7 @@ struct EachTournamentView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
                     
-                }, label: {
-                    Label("", systemImage: "square.and.pencil")
-                        .foregroundColor(.red)
-                })
-            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    
+                    self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Label("", systemImage: "trash.fill")
                         .foregroundColor(.red)
