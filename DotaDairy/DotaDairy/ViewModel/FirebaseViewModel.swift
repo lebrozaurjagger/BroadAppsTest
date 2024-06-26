@@ -19,10 +19,9 @@ class RemoteConfigViewModel: ObservableObject {
     func fetchRemoteConfig() {
         let remoteConfig = RemoteConfig.remoteConfig()
         
-        // Set default values (if needed)
         let defaultValue: [String: NSObject] = [
             "url_link": "" as NSObject, // Default URL
-            "isDead": false as NSObject // Default value for isDead
+            "isDead": false as NSObject, // Default value for isDead
         ]
         remoteConfig.setDefaults(defaultValue)
         

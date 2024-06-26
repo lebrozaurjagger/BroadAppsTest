@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct UserOnboardingView: View {
+    @ObservedObject var onboardingViewModel: OnboardingViewModel
+    
     @State var counter: Int = 0
     
     var body: some View {
@@ -74,6 +76,7 @@ struct UserOnboardingView: View {
                     
                     if counter == 2 {
                         counter = 0
+                        onboardingViewModel.hasCompletedOnboarding = true
                     }
                 }
             }, label: {
@@ -91,8 +94,4 @@ struct UserOnboardingView: View {
             .frame(maxWidth: 400)
         }
     }
-}
-
-#Preview {
-    UserOnboardingView()
 }

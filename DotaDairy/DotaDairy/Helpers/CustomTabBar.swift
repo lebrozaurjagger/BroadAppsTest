@@ -52,10 +52,6 @@ struct TabBar: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
-
 private struct TabBarButton: View {
     let imageName: String
     var body: some View {

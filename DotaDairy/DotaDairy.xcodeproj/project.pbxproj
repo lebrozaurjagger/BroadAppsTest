@@ -44,6 +44,8 @@
 		64E53A9A2C1ED537009A38C5 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A992C1ED537009A38C5 /* OneSignalInAppMessages */; };
 		64E6258A2C287DF000E7E4AF /* FirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E625892C287DF000E7E4AF /* FirebaseViewModel.swift */; };
 		64E6258C2C29B65D00E7E4AF /* CookiesWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6258B2C29B65D00E7E4AF /* CookiesWebView.swift */; };
+		64E625902C2C5F9600E7E4AF /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6258F2C2C5F9600E7E4AF /* DataModel.swift */; };
+		64E625922C2CC70700E7E4AF /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E625912C2CC70700E7E4AF /* OnboardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		64E53A9C2C1F23BC009A38C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		64E625892C287DF000E7E4AF /* FirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewModel.swift; sourceTree = "<group>"; };
 		64E6258B2C29B65D00E7E4AF /* CookiesWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesWebView.swift; sourceTree = "<group>"; };
+		64E6258F2C2C5F9600E7E4AF /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		64E625912C2CC70700E7E4AF /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 				6400DC522C1B61E0006DF41F /* MatchesModel.swift */,
 				6400DC4C2C1A3735006DF41F /* TournamentModel.swift */,
 				64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */,
+				64E6258F2C2C5F9600E7E4AF /* DataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				64E625892C287DF000E7E4AF /* FirebaseViewModel.swift */,
+				64E625912C2CC70700E7E4AF /* OnboardingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				6400DC3A2C19B7D7006DF41F /* StatisticsView.swift in Sources */,
 				642E94DE2C18FD3500478AB2 /* ColorScheme.swift in Sources */,
 				6400DC532C1B61E0006DF41F /* MatchesModel.swift in Sources */,
+				64E625902C2C5F9600E7E4AF /* DataModel.swift in Sources */,
 				6400DC352C19B790006DF41F /* AddTournamentView.swift in Sources */,
 				6400DC5B2C1BBF8F006DF41F /* CustomTextField.swift in Sources */,
 				642E94CE2C18FC6D00478AB2 /* ContentView.swift in Sources */,
@@ -420,6 +427,7 @@
 				6400DC422C19F0A7006DF41F /* UserOnboardingView.swift in Sources */,
 				6400DC4D2C1A3735006DF41F /* TournamentModel.swift in Sources */,
 				6400DC5E2C1C77BE006DF41F /* EachTournamentView.swift in Sources */,
+				64E625922C2CC70700E7E4AF /* OnboardingViewModel.swift in Sources */,
 				6400DC3D2C19B7F5006DF41F /* SettingsView.swift in Sources */,
 				642D0E282C2205D600A978FF /* HomeView.swift in Sources */,
 				6400DC4F2C1A4850006DF41F /* CustomTabBar.swift in Sources */,

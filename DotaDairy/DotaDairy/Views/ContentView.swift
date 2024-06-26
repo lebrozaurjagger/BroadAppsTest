@@ -6,126 +6,116 @@
 //
 
 import SwiftUI
+import Combine
 import Firebase
 import FirebaseRemoteConfig
 import WebKit
 
 struct ContentView: View {
     @StateObject private var remoteConfigManager = RemoteConfigViewModel()
+    @StateObject private var onboardingViewModel = OnboardingViewModel()
     
-    @State private var ONE_0 = 1
+    @State private var ONE_0 = 0 
+    @State private var isLoading = false
+    @State private var requestFailed = false
     
-    @State private var showHomeView = false
-    @State private var showWebView = false
-    @State private var isLoading = true
+    private let remoteConfig = RemoteConfig.remoteConfig()
     
     var body: some View {
         VStack {
-            if isLoading {
-                LoadingView(variation: 0)
-                    .onAppear {
-                        performInitialCheck()
+            if ONE_0 == 1 {
+                if isLoading {
+                    if onboardingViewModel.hasCompletedOnboarding {
+                        HomeView()
+                    } else {
+                        ReviewerOnboardingView(onboardingViewModel: onboardingViewModel)
                     }
-            } else if showWebView {
-                CookiesWebView()
-            } else if showHomeView {
-                HomeView()
+                } else {
+                    LoadingView(variation: 1)
+                }
+            } else if ONE_0 == 0 {
+                if isLoading {
+                    if onboardingViewModel.hasCompletedOnboarding {
+                        CookiesWebView()
+                    } else {
+                        UserOnboardingView(onboardingViewModel: onboardingViewModel)
+                    }
+                } else {
+                    LoadingView(variation: 0)
+                }
             }
         }
         .onAppear {
             remoteConfigManager.fetchRemoteConfig()
-        }
-    }
-    
-    func performInitialCheck() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
-            fetchDeferredDate { deferredDate in
-                guard let deferredDate = deferredDate else {
-                    self.showHomeView = true
-                    self.isLoading = false
-                    return
-                }
-                let currentDate = Date()
-                if currentDate < deferredDate {
-                    self.showHomeView = true
-                    self.isLoading = false
-                } else {
-                    makeServerRequest()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                withAnimation {
+                    self.isLoading = true
                 }
             }
         }
     }
     
-    func makeServerRequest() {
-        let timeout: TimeInterval = 7
-        var serverResponseReceived = false
-
-        let timer = Timer.scheduledTimer(withTimeInterval: timeout, repeats: false) { _ in
-            if !serverResponseReceived {
-                fetchIsDeadFromFirebase { isDead in
-                    self.showHomeView = !isDead
-                    self.showWebView = isDead
-                    self.isLoading = false
-                }
-            }
-        }
-
-        let url = URL(string: "https://codegeniuslab.space/app/x1xb4tt")!
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            serverResponseReceived = true
-            timer.invalidate()
-            if let data = data, let jsonResponse = try? JSONDecoder().decode(ServerResponse.self, from: data) {
-                self.showHomeView = jsonResponse.result
-                self.showWebView = !jsonResponse.result
+    private func fetchRemoteConfig() {
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 3600 // Fetch interval in seconds
+        remoteConfig.configSettings = settings
+        
+        remoteConfig.fetchAndActivate { status, error in
+            if status == .successFetchedFromRemote || status == .successUsingPreFetchedData {
+                let lastDateString = self.remoteConfig["lastDate"].stringValue ?? ""
+                self.checkDate(lastDateString: lastDateString)
             } else {
-                self.showHomeView = true
+                print("Error fetching remote config: \(error?.localizedDescription ?? "No error available.")")
             }
-            self.isLoading = false
-        }
-        task.resume()
-    }
-    
-    func fetchIsDeadFromFirebase(completion: @escaping (Bool) -> Void) {
-        let remoteConfig = RemoteConfig.remoteConfig()
-        remoteConfig.fetch { status, error in
-            if status == .success {
-                remoteConfig.activate { _, _ in
-                    let isDead = remoteConfig.configValue(forKey: "isDead").boolValue
-                    completion(isDead)
-                }
-            } else {
-                completion(false)
-            }
-        }
-    }
-
-    func mockServerRequest(completion: @escaping (Bool) -> Void) {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 5) {
-            completion(true) // Mocked success response
         }
     }
     
-    func fetchDeferredDate(completion: @escaping (Date?) -> Void) {
-        let remoteConfig = RemoteConfig.remoteConfig()
-        remoteConfig.fetch { status, error in
-            if status == .success {
-                remoteConfig.activate { _, _ in
-                    if let dateString = remoteConfig.configValue(forKey: "lastDate").stringValue {
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "MM/dd/yyyy"
-                        if let date = dateFormatter.date(from: dateString) {
-                            completion(date)
-                        } else {
-                            completion(nil)
-                        }
-                    } else {
-                        completion(nil)
-                    }
+    private func checkDate(lastDateString: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        
+        guard let lastDate = dateFormatter.date(from: lastDateString) else {
+            print("Error: Unable to parse date")
+            return
+        }
+        
+        let currentDate = Date()
+        let threeDaysInSeconds: TimeInterval = 3 * 24 * 60 * 60
+        
+        if currentDate.timeIntervalSince(lastDate) <= threeDaysInSeconds {
+            ONE_0 = 1
+        } else {
+            serverRequest()
+        }
+    }
+    
+    func serverRequest() {
+        let timeout = DispatchTime.now() + 7
+        
+        DispatchQueue.global().asyncAfter(deadline: timeout) {
+            if !requestFailed {
+                DispatchQueue.main.async {
+                    checkIsDead()
                 }
-            } else {
-                completion(nil)
             }
         }
+        
+        NetworkManager.shared.fetchResponse { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    self.ONE_0 = response.past ? 1 : 0
+                    self.requestFailed = true
+                case .failure:
+                    self.checkIsDead()
+                }
+            }
+        }
+    }
+    
+    private func checkIsDead() {
+        ONE_0 = remoteConfigManager.isDead ? 0 : 1
     }
 }
 
