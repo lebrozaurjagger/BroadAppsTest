@@ -36,7 +36,7 @@ struct SettingsView: View {
                                     ListButton(title: "Usage Policy", icon: "doc.text.fill")
                                 })
                                 .sheet(isPresented: $isWebViewPresented) {
-                                    WebView(url: URL(string: "https://www.termsfeed.com/live/4a9582a3-fa8c-4ea5-a372-89bd3d035873")!, cookies: [HTTPCookie]())
+                                    WebView(url: URL(string: "https://www.termsfeed.com/live/4a9582a3-fa8c-4ea5-a372-89bd3d035873")!)
                                 }
                                 
                                 Rectangle()

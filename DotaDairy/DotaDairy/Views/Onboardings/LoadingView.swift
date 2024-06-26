@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoadingView: View {
-    @State private var variation = 1
+    @State var variation: Int
     @State private var progress: Double = 0.0
     @State private var timer: Timer?
     
@@ -29,12 +29,12 @@ struct LoadingView: View {
                 .ignoresSafeArea()
             
             if variation == 1 {
-                Image("LogoOther")
+                Image("IconDairy")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 190)
             } else {
-                Image("IconDota")
+                Image("LogoOther")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 190)
@@ -69,7 +69,7 @@ struct LoadingView: View {
 }
 
 #Preview {
-    LoadingView()
+    LoadingView(variation: 1)
 }
 
 struct CustomProgressViewStyle: ProgressViewStyle {

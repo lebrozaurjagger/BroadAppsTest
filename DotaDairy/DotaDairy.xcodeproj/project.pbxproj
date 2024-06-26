@@ -42,6 +42,8 @@
 		64E53A812C1ED0A9009A38C5 /* ApphudSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A802C1ED0A9009A38C5 /* ApphudSDK */; };
 		64E53A982C1ED537009A38C5 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A972C1ED537009A38C5 /* OneSignalFramework */; };
 		64E53A9A2C1ED537009A38C5 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 64E53A992C1ED537009A38C5 /* OneSignalInAppMessages */; };
+		64E6258A2C287DF000E7E4AF /* FirebaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E625892C287DF000E7E4AF /* FirebaseViewModel.swift */; };
+		64E6258C2C29B65D00E7E4AF /* CookiesWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6258B2C29B65D00E7E4AF /* CookiesWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		64E53A7D2C1ECE81009A38C5 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		64E53A922C1ED45B009A38C5 /* DotaDairy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DotaDairy.entitlements; sourceTree = "<group>"; };
 		64E53A9C2C1F23BC009A38C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		64E625892C287DF000E7E4AF /* FirebaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseViewModel.swift; sourceTree = "<group>"; };
+		64E6258B2C29B65D00E7E4AF /* CookiesWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,7 @@
 				642D0E2E2C23362F00A978FF /* GoogleService-Info.plist */,
 				64E53A922C1ED45B009A38C5 /* DotaDairy.entitlements */,
 				642E94CB2C18FC6D00478AB2 /* DotaDairyApp.swift */,
+				64E625882C287D2900E7E4AF /* ViewModel */,
 				642E94D92C18FC9200478AB2 /* Views */,
 				6400DC4B2C1A3711006DF41F /* Models */,
 				642E94DC2C18FD2900478AB2 /* Helpers */,
@@ -223,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				642E94CD2C18FC6D00478AB2 /* ContentView.swift */,
+				64E6258B2C29B65D00E7E4AF /* CookiesWebView.swift */,
 				642D0E272C2205D600A978FF /* HomeView.swift */,
 				6400DC3E2C19F05D006DF41F /* Onboardings */,
 				642E94DF2C19083E00478AB2 /* Matches */,
@@ -269,6 +275,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64E625882C287D2900E7E4AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				64E625892C287DF000E7E4AF /* FirebaseViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +423,8 @@
 				6400DC3D2C19B7F5006DF41F /* SettingsView.swift in Sources */,
 				642D0E282C2205D600A978FF /* HomeView.swift in Sources */,
 				6400DC4F2C1A4850006DF41F /* CustomTabBar.swift in Sources */,
+				64E6258C2C29B65D00E7E4AF /* CookiesWebView.swift in Sources */,
+				64E6258A2C287DF000E7E4AF /* FirebaseViewModel.swift in Sources */,
 				6400DC572C1BA66A006DF41F /* NotificationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

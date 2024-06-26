@@ -11,122 +11,126 @@ import FirebaseRemoteConfig
 import WebKit
 
 struct ContentView: View {
-    @State private var navigateToHome: Bool?
-    @State private var remoteConfigDate: Date = Date()
-    @State private var isDead: Bool = false
+    @StateObject private var remoteConfigManager = RemoteConfigViewModel()
+    
+    @State private var ONE_0 = 1
+    
+    @State private var showHomeView = false
+    @State private var showWebView = false
+    @State private var isLoading = true
     
     var body: some View {
-        if let navigateToHome = navigateToHome {
-            if navigateToHome {
+        VStack {
+            if isLoading {
+                LoadingView(variation: 0)
+                    .onAppear {
+                        performInitialCheck()
+                    }
+            } else if showWebView {
+                CookiesWebView()
+            } else if showHomeView {
                 HomeView()
-            } else {
-                WebView(url: URL(string: "https://www.example.com")!, cookies: createCookies())
-                    .ignoresSafeArea()
             }
-        } else {
-            LoadingView()
+        }
+        .onAppear {
+            remoteConfigManager.fetchRemoteConfig()
         }
     }
     
-    func createCookies() -> [HTTPCookie] {
-        var cookies = [HTTPCookie]()
-        
-        if let cookie = HTTPCookie(properties: [
-            .domain: "example.com",
-            .path: "/",
-            .name: "exampleCookie",
-            .value: "exampleValue",
-            .secure: "TRUE",
-            .expires: NSDate(timeIntervalSinceNow: 31556926)
-        ]) {
-            cookies.append(cookie)
-        }
-        
-        return cookies
-    }
-    
-    func saveCookies(_ cookies: [HTTPCookie]) {
-        let cookieStorage = HTTPCookieStorage.shared
-        for cookie in cookies {
-            cookieStorage.setCookie(cookie)
+    func performInitialCheck() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
+            fetchDeferredDate { deferredDate in
+                guard let deferredDate = deferredDate else {
+                    self.showHomeView = true
+                    self.isLoading = false
+                    return
+                }
+                let currentDate = Date()
+                if currentDate < deferredDate {
+                    self.showHomeView = true
+                    self.isLoading = false
+                } else {
+                    makeServerRequest()
+                }
+            }
         }
     }
     
-    func fetchRemoteConfigDate(completion: @escaping (Bool) -> Void) {
+    func makeServerRequest() {
+        let timeout: TimeInterval = 7
+        var serverResponseReceived = false
+
+        let timer = Timer.scheduledTimer(withTimeInterval: timeout, repeats: false) { _ in
+            if !serverResponseReceived {
+                fetchIsDeadFromFirebase { isDead in
+                    self.showHomeView = !isDead
+                    self.showWebView = isDead
+                    self.isLoading = false
+                }
+            }
+        }
+
+        let url = URL(string: "https://codegeniuslab.space/app/x1xb4tt")!
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            serverResponseReceived = true
+            timer.invalidate()
+            if let data = data, let jsonResponse = try? JSONDecoder().decode(ServerResponse.self, from: data) {
+                self.showHomeView = jsonResponse.result
+                self.showWebView = !jsonResponse.result
+            } else {
+                self.showHomeView = true
+            }
+            self.isLoading = false
+        }
+        task.resume()
+    }
+    
+    func fetchIsDeadFromFirebase(completion: @escaping (Bool) -> Void) {
         let remoteConfig = RemoteConfig.remoteConfig()
         remoteConfig.fetch { status, error in
             if status == .success {
                 remoteConfig.activate { _, _ in
-                    if let dateString = remoteConfig["lastDate"].stringValue,
-                       let date = ISO8601DateFormatter().date(from: dateString) {
-                        self.remoteConfigDate = date
-                        completion(true)
-                    } else {
-                        completion(false)
-                    }
+                    let isDead = remoteConfig.configValue(forKey: "isDead").boolValue
+                    completion(isDead)
                 }
             } else {
                 completion(false)
             }
         }
     }
-    
-    func makeServerRequest(completion: @escaping (Bool) -> Void) {
-        // Implement your server request logic here and call completion with true or false
-        // Simulation of a server request
-        
-        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
-            completion(true) // Simulate server response
+
+    func mockServerRequest(completion: @escaping (Bool) -> Void) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 5) {
+            completion(true) // Mocked success response
         }
     }
     
-    func startCountdownAndRequest() {
-        let dispatchGroup = DispatchGroup()
-        var serverResponse: Bool? = nil
-        
-        dispatchGroup.enter()
-        // Make server request here (pseudo-code)
-        makeServerRequest { response in
-            serverResponse = response
-            dispatchGroup.leave()
-        }
-        
-        DispatchQueue.global().asyncAfter(deadline: .now() + 7) {
-            dispatchGroup.leave()
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            if let serverResponse = serverResponse {
-                self.navigateToHome = serverResponse
-            } else {
-                // Fetch `isDead` from Remote Config
-                let remoteConfig = RemoteConfig.remoteConfig()
-                if remoteConfig["isDead"].boolValue {
-                    self.navigateToHome = false
-                } else {
-                    self.navigateToHome = true
+    func fetchDeferredDate(completion: @escaping (Date?) -> Void) {
+        let remoteConfig = RemoteConfig.remoteConfig()
+        remoteConfig.fetch { status, error in
+            if status == .success {
+                remoteConfig.activate { _, _ in
+                    if let dateString = remoteConfig.configValue(forKey: "lastDate").stringValue {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "MM/dd/yyyy"
+                        if let date = dateFormatter.date(from: dateString) {
+                            completion(date)
+                        } else {
+                            completion(nil)
+                        }
+                    } else {
+                        completion(nil)
+                    }
                 }
-            }
-        }
-    }
-    
-    func checkDateAndFetch() {
-        fetchRemoteConfigDate { success in
-            guard success else {
-                // Handle error
-                return
-            }
-            
-            let currentDate = Date()
-            let deferredDate = Calendar.current.date(byAdding: .day, value: 3, to: remoteConfigDate)!
-            
-            if currentDate < deferredDate {
-                self.navigateToHome = true
             } else {
-                startCountdownAndRequest()
+                completion(nil)
             }
         }
     }
+}
+
+struct ServerResponse: Decodable {
+    let result: Bool
 }
 
 #Preview {
