@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct UserOnboardingView: View {
     @ObservedObject var onboardingViewModel: OnboardingViewModel
@@ -74,6 +75,10 @@ struct UserOnboardingView: View {
                 withAnimation {
                     counter += 1
                     
+                    if counter == 1 {
+                        requestReview()
+                    }
+                    
                     if counter == 2 {
                         counter = 0
                         onboardingViewModel.hasCompletedOnboarding = true
@@ -92,6 +97,12 @@ struct UserOnboardingView: View {
             })
             .padding()
             .frame(maxWidth: 400)
+        }
+    }
+    
+    func requestReview() {
+        if let windowScene = UIApplication.shared.windows.first?.windowScene {
+            SKStoreReviewController.requestReview(in: windowScene)
         }
     }
 }

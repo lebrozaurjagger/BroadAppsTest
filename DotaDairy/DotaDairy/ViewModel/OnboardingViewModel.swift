@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class OnboardingViewModel: ObservableObject {
-    private var universalKey = "1234"
+    private var universalKey = "123456789"
     
     @Published var hasCompletedOnboarding: Bool {
         didSet {

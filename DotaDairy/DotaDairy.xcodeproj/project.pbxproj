@@ -46,6 +46,9 @@
 		64E6258C2C29B65D00E7E4AF /* CookiesWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6258B2C29B65D00E7E4AF /* CookiesWebView.swift */; };
 		64E625902C2C5F9600E7E4AF /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6258F2C2C5F9600E7E4AF /* DataModel.swift */; };
 		64E625922C2CC70700E7E4AF /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E625912C2CC70700E7E4AF /* OnboardingViewModel.swift */; };
+		64E625942C2CFAE400E7E4AF /* MatchesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E625932C2CFAE400E7E4AF /* MatchesListView.swift */; };
+		64E625962C2D0B3500E7E4AF /* TournamentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E625952C2D0B3500E7E4AF /* TournamentsListView.swift */; };
+		64E625982C2E518100E7E4AF /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E625972C2E518100E7E4AF /* NotificationsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +112,9 @@
 		64E6258B2C29B65D00E7E4AF /* CookiesWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiesWebView.swift; sourceTree = "<group>"; };
 		64E6258F2C2C5F9600E7E4AF /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		64E625912C2CC70700E7E4AF /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		64E625932C2CFAE400E7E4AF /* MatchesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListView.swift; sourceTree = "<group>"; };
+		64E625952C2D0B3500E7E4AF /* TournamentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsListView.swift; sourceTree = "<group>"; };
+		64E625972C2E518100E7E4AF /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				6400DC322C19B780006DF41F /* TournamentsView.swift */,
+				64E625952C2D0B3500E7E4AF /* TournamentsListView.swift */,
 				6400DC342C19B790006DF41F /* AddTournamentView.swift */,
 				6400DC5D2C1C77BE006DF41F /* EachTournamentView.swift */,
 			);
@@ -259,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				642E94DA2C18FCA400478AB2 /* MatchesView.swift */,
+				64E625932C2CFAE400E7E4AF /* MatchesListView.swift */,
 				642E94E02C19086200478AB2 /* AddMatchView.swift */,
 				64A5A8822C21071100EF25CA /* EachMatchView.swift */,
 			);
@@ -287,6 +295,7 @@
 			children = (
 				64E625892C287DF000E7E4AF /* FirebaseViewModel.swift */,
 				64E625912C2CC70700E7E4AF /* OnboardingViewModel.swift */,
+				64E625972C2E518100E7E4AF /* NotificationsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -416,6 +425,8 @@
 				64E625902C2C5F9600E7E4AF /* DataModel.swift in Sources */,
 				6400DC352C19B790006DF41F /* AddTournamentView.swift in Sources */,
 				6400DC5B2C1BBF8F006DF41F /* CustomTextField.swift in Sources */,
+				64E625982C2E518100E7E4AF /* NotificationsViewModel.swift in Sources */,
+				64E625942C2CFAE400E7E4AF /* MatchesListView.swift in Sources */,
 				642E94CE2C18FC6D00478AB2 /* ContentView.swift in Sources */,
 				6400DC4A2C1A1F13006DF41F /* LoadingView.swift in Sources */,
 				64A5A8832C21071100EF25CA /* EachMatchView.swift in Sources */,
@@ -430,6 +441,7 @@
 				64E625922C2CC70700E7E4AF /* OnboardingViewModel.swift in Sources */,
 				6400DC3D2C19B7F5006DF41F /* SettingsView.swift in Sources */,
 				642D0E282C2205D600A978FF /* HomeView.swift in Sources */,
+				64E625962C2D0B3500E7E4AF /* TournamentsListView.swift in Sources */,
 				6400DC4F2C1A4850006DF41F /* CustomTabBar.swift in Sources */,
 				64E6258C2C29B65D00E7E4AF /* CookiesWebView.swift in Sources */,
 				64E6258A2C287DF000E7E4AF /* FirebaseViewModel.swift in Sources */,

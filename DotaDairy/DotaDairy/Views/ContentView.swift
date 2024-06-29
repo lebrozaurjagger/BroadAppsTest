@@ -10,14 +10,17 @@ import Combine
 import Firebase
 import FirebaseRemoteConfig
 import WebKit
+import UserNotifications
 
 struct ContentView: View {
-    @StateObject private var remoteConfigManager = RemoteConfigViewModel()
+    @StateObject private var remoteConfigViewModel = RemoteConfigViewModel()
     @StateObject private var onboardingViewModel = OnboardingViewModel()
+    @StateObject private var notificationsViewModel = NotificationsViewModel()
     
-    @State private var ONE_0 = 0 
+    @State private var ONE_0 = 0
     @State private var isLoading = false
     @State private var requestFailed = false
+    @State private var isNotificationsOff = false
     
     private let remoteConfig = RemoteConfig.remoteConfig()
     
@@ -46,12 +49,21 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            remoteConfigManager.fetchRemoteConfig()
+            checkNotificationStatus()
+            remoteConfigViewModel.fetchRemoteConfig()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
                 withAnimation {
                     self.isLoading = true
                 }
+            }
+        }
+    }
+    
+    func checkNotificationStatus() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                self.isNotificationsOff = settings.authorizationStatus != .authorized
             }
         }
     }
@@ -115,7 +127,7 @@ struct ContentView: View {
     }
     
     private func checkIsDead() {
-        ONE_0 = remoteConfigManager.isDead ? 0 : 1
+        ONE_0 = remoteConfigViewModel.isDead ? 0 : 1
     }
 }
 
